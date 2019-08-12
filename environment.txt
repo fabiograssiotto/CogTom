@@ -1,0 +1,4 @@
+# This file simulates changes to the environment.
+# Format: Actor Object 
+Sally Basket # Sally has  basket
+Anne Box     # Anne has a box
