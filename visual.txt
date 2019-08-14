@@ -7,3 +7,6 @@ t   Entity  Animated
 1   Anne    True
 1   Basket  False
 1   Box     False
+2   Sally   True
+2   Basket  False
+2   Box     False
