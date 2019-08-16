@@ -3,6 +3,9 @@
 import time
 import pandas as pd
 
+# Local Classes imports
+from id import Id
+
 # Constants
 sleep_time = 5 # 5 seconds sleep time between Mind evaluations.
 
@@ -19,6 +22,10 @@ while (True):
 
     # First step is selecting entities for the current time step.
     entities = ent_df.loc[ent_df['t'] == t]
-    print(entities)
+    
+    # Create ID
+    id = Id(entities)
+    id.print()
+
     time.sleep(sleep_time)
     t = t + 1
