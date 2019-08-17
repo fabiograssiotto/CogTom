@@ -1,8 +1,8 @@
 # This file simulates a camera input returning a list of entities in the scene.
-# Each entity is also marked as animated (such as an Actor)
-# or inanimated (such as an object).The column t specifies the time step for the camera
+# The camera system also identifies if an entity is moving.
+# The column t specifies the time step for the camera
 # reading. 
-t   Entity  Animated
+t   Entity  Is_Moving
 1   Sally   True
 1   Anne    True
 1   Basket  False

@@ -22,15 +22,17 @@ t = 1
 while (True):
     print("Evaluating Mind Step ", t)
 
-    # First step is selecting entities for the current time step.
+    # First step is selecting entities for the current time step,
+    # and getting rid of the time information.
     entities = ent_df.loc[ent_df['t'] == t]
+    entities.drop(columns='t')
     
     # Create ID module
     id = Id(entities)
     id.print()
 
     # Create EDD module
-    edd = Edd(id.agents())
+    edd = Edd(entities, id.agents())
 
     time.sleep(sleep_time)
     t = t + 1

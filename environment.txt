@@ -1,7 +1,0 @@
-# This file simulates changes to the environment.
-# Format: Actor-sees-Object / Actor-sees-Actor
-Actor   Object
-Sally   Basket  # Sally has a basket (that is, Sally is seeing a basket)
-Anne    Box     # Anne has a box (Anne is seeing a box)
-Sally   Anne    # Sally sees Anne
-Anne    Sally   # Anne sees Sally
