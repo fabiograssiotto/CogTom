@@ -11,3 +11,5 @@ t   Agent   Object
 1   Anne    Sally
 1   Anne    Basket
 1   Anne    Box
+2   Anne    Basket
+2   Anne    Box
