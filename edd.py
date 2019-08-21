@@ -21,7 +21,7 @@ class Edd:
         lines = self.edd_eyes.shape[0]
         cols = self.edd_entities.shape[0] 
 
-        self.edd_eye_dir = np.zeros((lines, cols))
+        self.edd_eye_dir = np.zeros((lines, cols), dtype=int)
         # Fill in Eye Direction Array based on the visual system.
         eye_dir_arr = eye_dir.to_numpy()
         for entry in range(eye_dir_arr.shape[0]):
@@ -42,7 +42,9 @@ class Edd:
     
     def print(self):
         # Basic debugging
-        print("EDD_Eye_Direction: ", self.edd_eye_dir)
+        print("EDD_entities: ", self.edd_entities[:,0])
+        print("EDD_Eye_Direction: \n", self.edd_eye_dir)
+        print()
 
 
 
