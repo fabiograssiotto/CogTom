@@ -1,6 +1,7 @@
 # Zahid - an implementation of the Theory of Mind model according to Simon Baron Cohen.
 # The intent of this software program is to evaluate false belief tasks.
 import time
+import sys
 import pandas as pd
 
 # Local Class imports
@@ -21,20 +22,30 @@ eye_dir_df = pd.read_csv('eye_direction.txt',
                          delim_whitespace=True,
                          comment='#')
 
+print("Zahid - a computation implementation of the Theory of Mind model\n")
+
 # Start Mind Loop, evaluating at each time t.
+print("Starting simulation.\n")
 t = 1
 while (True):
-    print("Evaluating Mind Step ", t)
 
     # First step is selecting entities for the current time step,
     # and getting rid of the time information.
     entities = ent_df.loc[ent_df['t'] == t]
-    entities = entities.drop(columns='t')
+    if (entities.empty == True):
+        # Empty dataframe, so there are no more simulation steps.
+        sys.exit("Simulation ended.\n")
+    else:
+        entities = entities.drop(columns='t')
+
     # Do the same operation to the eye direction information
     # for the current time step.
     eye_dir = eye_dir_df.loc[eye_dir_df['t'] == t]
     eye_dir = eye_dir.drop(columns='t')
     
+    # Entering Main Loop
+    print("Evaluating Mind Step ", t)
+
     # Create ID module
     id = Id(entities)
     id.print() # Prints Agents
