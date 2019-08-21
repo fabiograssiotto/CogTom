@@ -22,7 +22,7 @@ eye_dir_df = pd.read_csv('eye_direction.txt',
                          delim_whitespace=True,
                          comment='#')
 
-print("Zahid - a computation implementation of the Theory of Mind model\n")
+print("Zahid - a computational implementation of the Theory of Mind model\n")
 
 # Start Mind Loop, evaluating at each time t.
 print("Starting simulation.\n")
