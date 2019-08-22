@@ -1,0 +1,19 @@
+Zahid - a computational implementation of the Theory of Mind model
+
+Starting simulation.
+
+Evaluating Mind Step  1
+Agents:  Sally Anne
+EDD_entities:  ['Sally' 'Anne' 'Basket' 'Box']
+EDD_Eye_Direction: 
+ [[0 1 1 1]
+ [1 0 1 1]]
+
+Evaluating Mind Step  2
+Agents:  Sally
+EDD_entities:  ['Sally' 'Basket' 'Box']
+EDD_Eye_Direction: 
+ [[0 0 0]]
+
+ Simulation ended.
+
