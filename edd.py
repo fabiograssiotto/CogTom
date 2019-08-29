@@ -39,11 +39,31 @@ class Edd:
             c =  np.where(self.edd_entities == obj)[0]
             # Set as '1' to identify a object that is in the visual field of the agent.
             self.edd_eye_dir[l, c] = 1
+
+        # Now create the EDD Agent store
+        # For each agent list the entities in its visual space
+        self.edd_agent_store = np.array([])
+        for agent in range(self.edd_eyes.shape[0]):
+            # For each agent line in edd_eyes
+            ag_list = []
+            for eye_dir in range(self.edd_eye_dir.shape[1]):
+                if self.edd_eye_dir[agent, eye_dir] == 1:
+                    # Add to agent store
+                    ag_list.append(self.edd_entities[eye_dir,0])
+            # Add to EDD agent store
+            if (self.edd_agent_store.size == 0):
+                # empty array
+                self.edd_agent_store = np.hstack((self.edd_agent_store, np.array(ag_list)))
+            else:
+                # Add as a new row
+                self.edd_agent_store = np.vstack((self.edd_agent_store, np.array(ag_list)))
+        
     
     def print(self):
         # Basic debugging
         print("EDD_entities: ", self.edd_entities[:,0])
         print("EDD_Eye_Direction: \n", self.edd_eye_dir)
+        print("EDD_Agent_Store: \n", self.edd_agent_store)
         print()
 
 
