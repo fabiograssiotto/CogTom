@@ -43,6 +43,7 @@ class Edd:
         # Now create the EDD Agent store
         # For each agent list the entities in its visual space
         self.edd_agent_store = np.array([])
+        ag_store_lst = []
         for agent in range(self.edd_eyes.shape[0]):
             # For each agent line in edd_eyes
             ag_list = []
@@ -50,20 +51,50 @@ class Edd:
                 if self.edd_eye_dir[agent, eye_dir] == 1:
                     # Add to agent store
                     ag_list.append(self.edd_entities[eye_dir,0])
+            ag_store_lst.append(ag_list)
+        self.edd_agent_store = np.array(ag_store_lst)
             # Add to EDD agent store
-            if (self.edd_agent_store.size == 0):
-                # empty array
-                self.edd_agent_store = np.hstack((self.edd_agent_store, np.array(ag_list)))
-            else:
+            #if (self.edd_agent_store.size == 0):
+            #    # empty array
+            #    self.edd_agent_store = np.hstack((self.edd_agent_store, np.array(ag_list)))
+            #else:
                 # Add as a new row
-                self.edd_agent_store = np.vstack((self.edd_agent_store, np.array(ag_list)))
+            #    self.edd_agent_store = np.vstack((self.edd_agent_store, np.array(ag_list)))
         
+        # Create EDD Gaze Register
+        # The Gaze Register identifies agents that are looking at each other.
+        mg_lst = []
+        for ag in range(self.edd_eyes.shape[0]):
+            # For each agent line in edd_eyes
+            agent1 = self.edd_eyes[ag]
+            for eye_dir in range(self.edd_eye_dir.shape[1]):
+                if self.edd_eye_dir[ag, eye_dir] == 1:
+                    # Check if entity being looked at is an agent, too.
+                    entity = self.edd_entities[eye_dir,0]
+                    is_agent = self.edd_entities[eye_dir,1]
+                    if (is_agent):
+                        # It is an agent too, so check if it is also looking back at the first agent. 
+                        # To do that, we search on the EDD eye direction matrix.
+                        l = np.where(self.edd_eyes == entity)[0]
+                        c = np.where(self.edd_entities == agent1)[0]
+                        if self.edd_eye_dir[l,c] == 1:
+                            # Mutual Gaze confirmed, add to list.
+                            mg_tuple = (agent1, entity)
+                            # Is it in the list, already? Check for duplicates.
+                            mg_tuple_inv = mg_tuple[::-1]
+                            if (mg_tuple not in mg_lst) and (mg_tuple_inv not in mg_lst):
+                                mg_lst.append(mg_tuple)
+        # Add list to np array.
+        self.edd_gaze_register = np.array(mg_lst)
+        
+
     
     def print(self):
         # Basic debugging
         print("EDD_entities: ", self.edd_entities[:,0])
         print("EDD_Eye_Direction: \n", self.edd_eye_dir)
         print("EDD_Agent_Store: \n", self.edd_agent_store)
+        print("EDD_Gaze_Register:\n", self.edd_gaze_register)
         print()
 
 

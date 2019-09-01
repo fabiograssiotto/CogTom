@@ -13,3 +13,8 @@ t   Agent   Object
 1   Anne    Box
 2   Sally   Basket
 2   Sally   Box
+3   Sally   Anne
+3   Sally   Zahid
+3   Anne    Zahid
+3   Zahid   Anne
+3   Zahid   Sally
