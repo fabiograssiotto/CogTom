@@ -10,6 +10,3 @@ t   Entity  Is_Moving
 2   Sally   True
 2   Basket  False
 2   Box     False
-3   Sally   True
-3   Anne    True
-3   Zahid   True

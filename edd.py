@@ -90,11 +90,11 @@ class Edd:
 
     
     def print(self):
-        # Basic debugging
-        print("EDD_entities: ", self.edd_entities[:,0])
-        print("EDD_Eye_Direction: \n", self.edd_eye_dir)
-        print("EDD_Agent_Store: \n", self.edd_agent_store)
-        print("EDD_Gaze_Register:\n", self.edd_gaze_register)
+        print("EDD:")
+        print("Entities: ", self.edd_entities[:,0])
+        print("Eye_Direction: ", self.edd_eye_dir)
+        print("Agent_Store: ", self.edd_agent_store)
+        print("Gaze_Register:", self.edd_gaze_register)
         print()
 
 

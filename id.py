@@ -10,5 +10,7 @@ class Id:
     
     def print(self):
         # Basic debugging
-        print("Agents: ", *self.Id_Agent)
+        print("ID:")
+        print("Agents: ", self.Id_Agent)
+        print()
         

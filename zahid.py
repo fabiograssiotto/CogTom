@@ -7,6 +7,7 @@ import pandas as pd
 # Local Class imports
 from id import Id
 from edd import Edd
+from sam import Sam
 
 # Constants
 sleep_time = 5 # 5 seconds sleep time between Mind evaluations.
@@ -45,6 +46,7 @@ while (True):
     
     # Entering Main Loop
     print("Evaluating Mind Step ", t)
+    print()
 
     # Create ID module
     id = Id(entities)
@@ -54,7 +56,12 @@ while (True):
     edd = Edd(entities, id.agents())
     # Request Eye Direction Processing
     edd.process(eye_dir)
-    edd.print() # Prints Eye Direction Array
+    edd.print() # Prints EDD internal matrixes
+
+    # Create SAM module
+    sam = Sam(edd)
+    sam.process()
+    sam.print() # Prints SAM internal information
 
     time.sleep(sleep_time)
     t = t + 1
