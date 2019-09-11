@@ -8,6 +8,7 @@ import pandas as pd
 from id import Id
 from edd import Edd
 from sam import Sam
+from tom import ToM
 
 # Constants
 sleep_time = 5 # 5 seconds sleep time between Mind evaluations.
@@ -62,6 +63,11 @@ while (True):
     sam = Sam(edd)
     sam.process()
     sam.print() # Prints SAM internal information
+
+    # ...and finally the ToM module.
+    tom = ToM(id, edd, sam)
+    tom.process()
+    tom.print()
 
     time.sleep(sleep_time)
     t = t + 1
