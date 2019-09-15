@@ -58,7 +58,7 @@ while (True):
 
     # Create ID module
     id = Id(entities)
-    id.print() # Prints Agents
+    id.print() # Prints Agents and Drives
 
     # Create EDD module
     edd = Edd(entities, id.agents())

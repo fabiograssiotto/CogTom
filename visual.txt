@@ -1,24 +1,30 @@
-# This file simulates a camera input returning a list of entities in the scene.
-# The camera system also identifies if an entity is moving.
-# The column t specifies the time step for the camera
-# reading. 
-t   Entity  Is_Moving
-1   Sally   True
-1   Anne    True
-1   Basket  False
-1   Box     False
-2   Sally   True
-2   Anne    True
-2   Basket  False
-2   Box     False
-2   Ball    False
-3   Anne    True
-3   Basket  False
-3   Box     False
-4   Anne    True
-4   Basket  False
-4   Box     False
-4   Ball    False
-5   Sally   True
-5   Box     False
-5   Basket  False
+# This file simulates a camera input identifying a scene.
+# The camera system identifies:
+#   - a list of entities in the scene.
+#   - if the entity is moving, what will qualify it as an agent
+#   - what is the goal/drive of the agent based on the movement detected.
+# The column t specifies the time step for the camera information. 
+t   Entity  Is_Moving   Goal    Goal-Object Goal-Target
+1   Sally   True        None    None        None
+1   Anne    True        None    None        None
+1   Basket  False       None    None        None
+1   Box     False       None    None        None
+2   Sally   True        Hide    Ball        Basket
+2   Anne    True        None    None        None
+2   Basket  False       None    None        None
+2   Box     False       None    None        None
+2   Ball    False       None    None        None
+3   Anne    True        None    None        None
+3   Basket  False       None    None        None
+3   Box     False       None    None        None
+4   Anne    True        Get     Ball        Basket    
+4   Basket  False       None    None        None
+4   Box     False       None    None        None
+4   Ball    False       None    None        None
+5   Anne    True        Hide    Ball        Box
+5   Basket  False       None    None        None
+5   Box     False       None    None        None
+5   Ball    False       None    None        None
+6   Sally   True        Search  Ball        None
+6   Box     False       None    None        None
+6   Basket  False       None    None        None
