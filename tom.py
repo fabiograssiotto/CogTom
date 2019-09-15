@@ -8,16 +8,18 @@ class ToM:
     # The set of mental states ToM represents.
     MENTAL_STATES = ["SEES", "BELIEVES"]
 
-    def __init__(self, id, edd, sam):
+    def __init__(self, affordances, id, edd, sam):
+        self.afford = affordances.values.tolist() # List of affordances for the objects in the environment
         self.id = id
         self.edd = edd
         self.sam = sam
+        self.goals = id.goals()
         self.tom_beliefs = []
 
     def process(self):
         # Create representations of the mental states 
         # of the form Agent-Mental State-Object
-        
+
         #'SEES' mental state.
         for agent in range(self.edd.edd_eyes.shape[0]):
             tom_belief = []

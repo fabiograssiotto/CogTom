@@ -72,7 +72,7 @@ while (True):
     sam.print() # Prints SAM internal information
 
     # ...and finally the ToM module.
-    tom = ToM(id, edd, sam)
+    tom = ToM(afford_df, id, edd, sam)
     tom.process()
     tom.print()
 

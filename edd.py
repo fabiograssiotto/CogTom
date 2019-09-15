@@ -53,13 +53,6 @@ class Edd:
                     ag_list.append(self.edd_entities[eye_dir,0])
             ag_store_lst.append(ag_list)
         self.edd_agent_store = np.array(ag_store_lst)
-            # Add to EDD agent store
-            #if (self.edd_agent_store.size == 0):
-            #    # empty array
-            #    self.edd_agent_store = np.hstack((self.edd_agent_store, np.array(ag_list)))
-            #else:
-                # Add as a new row
-            #    self.edd_agent_store = np.vstack((self.edd_agent_store, np.array(ag_list)))
         
         # Create EDD Gaze Register
         # The Gaze Register identifies agents that are looking at each other.
