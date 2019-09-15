@@ -11,7 +11,7 @@ from sam import Sam
 from tom import ToM
 
 # Constants
-sleep_time = 5 # 5 seconds sleep time between Mind evaluations.
+sleep_time = 2 # 5 seconds sleep time between Mind evaluations.
 
 # Basic input for scene. Start by accessing the camera input and identifying entities
 # in the scene.
@@ -24,10 +24,17 @@ eye_dir_df = pd.read_csv('eye_direction.txt',
                          delim_whitespace=True,
                          comment='#')
 
+# Affordances, or properties, for the objects in the scene.
+afford_df = pd.read_csv('affordances.txt',
+                        delim_whitespace=True,
+                        comment='#')
+
 print("Zahid - a computational implementation of the Theory of Mind model\n")
 
 # Start Mind Loop, evaluating at each time t.
-print("Starting simulation.\n")
+print("Starting simulation. Mind Steps =", ent_df['t'].max())
+print()
+
 t = 1
 while (True):
 

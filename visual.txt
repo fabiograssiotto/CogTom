@@ -8,5 +8,17 @@ t   Entity  Is_Moving
 1   Basket  False
 1   Box     False
 2   Sally   True
+2   Anne    True
 2   Basket  False
 2   Box     False
+2   Ball    False
+3   Anne    True
+3   Basket  False
+3   Box     False
+4   Anne    True
+4   Basket  False
+4   Box     False
+4   Ball    False
+5   Sally   True
+5   Box     False
+5   Basket  False
