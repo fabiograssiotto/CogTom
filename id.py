@@ -1,5 +1,7 @@
 # Intentionality Detector
-# ID function is to interprets motion stimuli to identify agents.
+# ID function has two functions:
+#  - interprets motion stimuli to identify agents.
+#  - identifies goals/drives for each agent.
 class Id:
     def __init__(self, entities):
         agents = entities.loc[entities['Is_Moving'] == True]
