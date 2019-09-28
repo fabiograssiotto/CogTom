@@ -3,5 +3,7 @@
 # For example, a Box may contain other objects, and a Ball may be hidden. 
 Object  Affordance
 Box     Contains
-Chest   Contains
+Basket   Contains
 Ball    Hides
+Anne    Exists
+Sally   Exists

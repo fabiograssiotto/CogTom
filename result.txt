@@ -1,19 +1,140 @@
 Zahid - a computational implementation of the Theory of Mind model
 
-Starting simulation.
+Starting simulation. Mind Steps = 6
 
 Evaluating Mind Step  1
-Agents:  Sally Anne
-EDD_entities:  ['Sally' 'Anne' 'Basket' 'Box']
-EDD_Eye_Direction: 
- [[0 1 1 1]
+
+ID:
+Agents:  ['Sally', 'Anne']
+Goals:  []
+
+EDD:
+Entities:  ['Sally' 'Anne' 'Basket' 'Box']
+Eye_Direction:  [[0 1 1 1]
  [1 0 1 1]]
+Agent_Store:  [['Anne' 'Basket' 'Box']
+ ['Sally' 'Basket' 'Box']]
+Gaze_Register: [['Sally' 'Anne']]
+
+SAM:
+Entities on scene:  ['Sally', 'Anne', 'Basket', 'Box']
+Agents on scene:  ['Sally', 'Anne']
+Agents with shared attention:  [['Basket', 'Sally', 'Anne'], ['Box', 'Sally', 'Anne']]
+
+ToM:
+Agents:  ['Sally', 'Anne']
+Beliefs:  [['Sally', 'SEES', 'Anne'], ['Sally', 'SEES', 'Basket'], ['Sally', 'SEES', 'Box'], ['Anne', 'SEES', 'Sally'], ['Anne', 'SEES', 'Basket'], ['Anne', 'SEES', 'Box']]
+
 
 Evaluating Mind Step  2
-Agents:  Sally
-EDD_entities:  ['Sally' 'Basket' 'Box']
-EDD_Eye_Direction: 
- [[0 0 0]]
 
- Simulation ended.
+ID:
+Agents:  ['Sally', 'Anne']
+Goals:  [['Sally', 'Hide', 'Ball', 'Basket']]
+
+EDD:
+Entities:  ['Sally' 'Anne' 'Basket' 'Box' 'Ball']
+Eye_Direction:  [[0 1 1 1 1]
+ [1 0 1 1 1]]
+Agent_Store:  [['Anne' 'Basket' 'Box' 'Ball']
+ ['Sally' 'Basket' 'Box' 'Ball']]
+Gaze_Register: [['Sally' 'Anne']]
+
+SAM:
+Entities on scene:  ['Sally', 'Anne', 'Basket', 'Box', 'Ball']
+Agents on scene:  ['Sally', 'Anne']
+Agents with shared attention:  [['Basket', 'Sally', 'Anne'], ['Box', 'Sally', 'Anne'], ['Ball', 'Sally', 'Anne']]
+
+ToM:
+Agents:  ['Sally', 'Anne']
+Beliefs:  [['Sally', 'SEES', 'Anne'], ['Sally', 'SEES', 'Basket'], ['Sally', 'SEES', 'Box'], ['Sally', 'SEES', 'Ball'], ['Anne', 'SEES', 'Sally'], ['Anne', 'SEES', 'Basket'], ['Anne', 'SEES', 'Box'], ['Anne', 'SEES', 'Ball']]
+
+
+Evaluating Mind Step  3
+
+ID:
+Agents:  ['Anne']
+Goals:  []
+
+EDD:
+Entities:  ['Anne' 'Basket' 'Box']
+Eye_Direction:  [[0 1 1]]
+Agent_Store:  [['Basket' 'Box']]
+Gaze_Register: []
+
+SAM:
+Entities on scene:  ['Anne', 'Basket', 'Box']
+Agents on scene:  ['Anne']
+Agents with shared attention:  []
+
+ToM:
+Agents:  ['Anne']
+Beliefs:  [['Anne', 'SEES', 'Basket'], ['Anne', 'SEES', 'Box']]
+
+
+Evaluating Mind Step  4
+
+ID:
+Agents:  ['Anne']
+Goals:  [['Anne', 'Get', 'Ball', 'Basket']]
+
+EDD:
+Entities:  ['Anne' 'Basket' 'Box' 'Ball']
+Eye_Direction:  [[0 1 1 1]]
+Agent_Store:  [['Basket' 'Box' 'Ball']]
+Gaze_Register: []
+
+SAM:
+Entities on scene:  ['Anne', 'Basket', 'Box', 'Ball']
+Agents on scene:  ['Anne']
+Agents with shared attention:  []
+
+ToM:
+Agents:  ['Anne']
+Beliefs:  [['Anne', 'SEES', 'Basket'], ['Anne', 'SEES', 'Box'], ['Anne', 'SEES', 'Ball']]
+
+
+Evaluating Mind Step  5
+
+ID:
+Agents:  ['Anne']
+Goals:  [['Anne', 'Hide', 'Ball', 'Box']]
+
+EDD:
+Entities:  ['Anne' 'Basket' 'Box' 'Ball']
+Eye_Direction:  [[0 1 1 1]]
+Agent_Store:  [['Basket' 'Box' 'Ball']]
+Gaze_Register: []
+
+SAM:
+Entities on scene:  ['Anne', 'Basket', 'Box', 'Ball']
+Agents on scene:  ['Anne']
+Agents with shared attention:  []
+
+ToM:
+Agents:  ['Anne']
+Beliefs:  [['Anne', 'SEES', 'Basket'], ['Anne', 'SEES', 'Box'], ['Anne', 'SEES', 'Ball']]
+
+
+Evaluating Mind Step  6
+
+ID:
+Agents:  ['Sally']
+Goals:  [['Sally', 'Search', 'Ball', 'None']]
+
+EDD:
+Entities:  ['Sally' 'Box' 'Basket']
+Eye_Direction:  [[0 1 1]]
+Agent_Store:  [['Box' 'Basket']]
+Gaze_Register: []
+
+SAM:
+Entities on scene:  ['Sally', 'Box', 'Basket']
+Agents on scene:  ['Sally']
+Agents with shared attention:  []
+
+ToM:
+Agents:  ['Sally']
+Beliefs:  [['Sally', 'SEES', 'Box'], ['Sally', 'SEES', 'Basket']]
+
 
