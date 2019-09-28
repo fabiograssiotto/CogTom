@@ -39,12 +39,33 @@ class ToM:
                         # Object has an affordance.
                         tom_belief.append(sublist[1])
                         break
+                # Check if drives from the environment 
+                # are likely to change beliefs.
+                tom_belief = self.check_drive(tom_belief)
                 self.tom_beliefs.append(tom_belief.copy())
                 del tom_belief[2:] # Only keeps Agent and Belief 
         
+    def check_drive(self, belief):
         # Next step is to analyse DRIVES and verify Beliefs that involve the drives in
         # the current mind step.
-        
+        for drv in self.drives:
+            drive = drv[1]
+            drive_obj = drv[2]
+            drive_tgt = drv[3]
+
+            # Check if this belief is modified by the at least one of the drives.
+            if belief[2] == drive_obj:
+                if (drive == 'Hide'):
+                    belief[3] = 'Hidden in'
+                    belief.append(drive_tgt)
+                    break
+                elif (drive == 'Get'):
+                    # TODO
+                    break
+                elif (drive == 'Search'):
+                    # TODO
+                    break
+        return belief
 
     def print(self):
         print("ToM:")
