@@ -79,8 +79,6 @@ class Edd:
                                 mg_lst.append(mg_tuple)
         # Add list to np array.
         self.edd_gaze_register = np.array(mg_lst)
-        
-
     
     def print(self):
         print("EDD:")
