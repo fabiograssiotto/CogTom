@@ -9,6 +9,7 @@ from id import Id
 from edd import Edd
 from sam import Sam
 from tom import ToM
+from mindprint import MindPrint
 
 # Constants
 sleep_time = 2 # 5 seconds sleep time between Mind evaluations.
@@ -58,23 +59,23 @@ while (True):
 
     # Create ID module
     id = Id(entities)
-    id.print() # Prints Agents and Drives
 
     # Create EDD module
     edd = Edd(entities, id.agents())
     # Request Eye Direction Processing
     edd.process(eye_dir)
-    edd.print() # Prints EDD internal matrixes
 
     # Create SAM module
     sam = Sam(edd)
     sam.process()
-    sam.print() # Prints SAM internal information
 
     # ...and finally the ToM module.
     tom = ToM(afford_df, id, edd, sam)
     tom.process()
-    tom.print()
+    
+    # Print out output
+    mp = MindPrint(id, edd, sam, tom)
+    mp.print(False)
 
     time.sleep(sleep_time)
     t = t + 1

@@ -13,6 +13,7 @@ class ToM:
         self.id = id
         self.edd = edd
         self.sam = sam
+        self.agents = id.agents
         self.goals = id.goals()
         self.tom_beliefs = []
 
@@ -44,6 +45,7 @@ class ToM:
 
     def print(self):
         print("ToM:")
-        print("Agents: ", self.id.agents())
+        print("Agents: ", self.agents())
+        print("Drives: ", self.goals)
         print("Beliefs: ", self.tom_beliefs)
         print("\n")
