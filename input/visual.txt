@@ -1,0 +1,30 @@
+# This file simulates a camera input identifying a scene.
+# The camera system identifies:
+#   - a list of entities in the scene.
+#   - if the entity is moving, what will qualify it as an agent
+#   - what is the drive of the agent based on the movement detected.
+# The column t specifies the time step for the camera information. 
+t   Entity  Is_Moving   Drive   Drive-Object Drive-Target
+1   Sally   True        None    None         None
+1   Anne    True        None    None         None
+1   Basket  False       None    None         None
+1   Box     False       None    None         None
+2   Sally   True        Hide    Ball         Basket
+2   Anne    True        None    None         None
+2   Basket  False       None    None         None
+2   Box     False       None    None         None
+2   Ball    False       None    None         None
+3   Anne    True        None    None         None
+3   Basket  False       None    None         None
+3   Box     False       None    None         None
+4   Anne    True        Get     Ball         Basket    
+4   Basket  False       None    None         None
+4   Box     False       None    None         None
+4   Ball    False       None    None         None
+5   Anne    True        Hide    Ball         Box
+5   Basket  False       None    None         None
+5   Box     False       None    None         None
+5   Ball    False       None    None         None
+6   Sally   True        Search  Ball         None
+6   Box     False       None    None         None
+6   Basket  False       None    None         None

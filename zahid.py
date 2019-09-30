@@ -5,81 +5,55 @@ import sys
 import pandas as pd
 
 # Local Class imports
-from id import Id
-from edd import Edd
-from sam import Sam
-from tom import ToM
-from beliefmem import BeliefMemory
-from mindprint import MindPrint
+from model.id import Id
+from model.edd import Edd
+from model.sam import Sam
+from model.tom import ToM
+from memory.beliefmem import BeliefMemory
+from input.environment import Environment
+from output.mindprint import MindPrint
+from output.logger import Logger
 
 # Constants
 sleep_time = 2 # 5 seconds sleep time between Mind evaluations.
 
-# Basic input for scene. Start by accessing the camera input and identifying entities
-# in the scene.
-ent_df = pd.read_csv('visual.txt',
-                     delim_whitespace=True,
-                     comment='#')
-
-# Eye Direction System, identifies which entities are in the visual field of an agent.
-eye_dir_df = pd.read_csv('eye_direction.txt',
-                         delim_whitespace=True,
-                         comment='#')
-
-# Affordances, or properties, for the objects in the scene.
-afford_df = pd.read_csv('affordances.txt',
-                        delim_whitespace=True,
-                        comment='#')
+# Create handler for Environment Inputs
+env = Environment()
 
 # Create Belief Memory
 memory = BeliefMemory()
 
-print("Zahid - a computational implementation of the Theory of Mind model\n")
-
-# Start Mind Loop, evaluating at each time t.
-print("Starting simulation. Mind Steps =", ent_df['t'].max())
-print()
+# Logger
+logger = Logger()
+logger.write("Zahid - a computational implementation of the Theory of Mind model")
+logger.write("Starting simulation. Mind Steps = " + str(env.get_max_time_step()))
 
 t = 1
 while (True):
-
-    # First step is selecting entities for the current time step,
-    # and getting rid of the time information.
-    entities = ent_df.loc[ent_df['t'] == t]
-    if (entities.empty == True):
-        # Empty dataframe, so there are no more simulation steps.
-        sys.exit("Simulation ended.\n")
-    else:
-        entities = entities.drop(columns='t')
-
-    # Do the same operation to the eye direction information
-    # for the current time step.
-    eye_dir = eye_dir_df.loc[eye_dir_df['t'] == t]
-    eye_dir = eye_dir.drop(columns='t')
-    
-    # Entering Main Loop
-    print("Evaluating Mind Step ", t)
-    print()
+    # Set current simulation step.
+    if (env.set_time_step(t) == -1):
+        logger.write("Simulation ended")
+        break
 
     # Create ID module
-    id = Id(entities)
+    id = Id(env.get_agents(), env.get_drives())
 
     # Create EDD module
-    edd = Edd(entities, id.agents())
-    # Request Eye Direction Processing
-    edd.process(eye_dir)
+    edd = Edd(env.get_entities(), env.get_agents())
+    edd.process(env.get_eye_dir())
 
     # Create SAM module
     sam = Sam(edd)
     sam.process()
 
-    # ...and finally the ToM module.
-    tom = ToM(afford_df, id, edd, sam, memory)
+    # Create ToM Module.
+    tom = ToM(env.get_affordances(), id, edd, sam, memory)
     tom.process()
     
     # Print out output
-    mp = MindPrint(id, edd, sam, tom)
-    mp.print(False)
+    mp = MindPrint(logger, t, id, edd, sam, tom, memory)
+    mp.print_header()
+    mp.print(onlyMemory = True)
 
     time.sleep(sleep_time)
     t = t + 1
