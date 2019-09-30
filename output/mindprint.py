@@ -12,9 +12,9 @@ class MindPrint:
         self.tom = tom
         self.mem = mem
         
-    def print_header(self):
+    def print_header(self, termlog):
         msg = "Evaluating Mind Step " + str(self.t)
-        self.logger.write(msg, memorylog = True)
+        self.logger.write(msg, logtoterm = termlog, memorylog = True)
 
     def print(self):
         self.id.print(self.logger)

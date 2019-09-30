@@ -6,8 +6,9 @@ class Logger(object):
         self.log = open("output\module.log", "w+")
         self.memlog = open("output\memory.log", "w+")
 
-    def write(self, message, memorylog = False):
-        self.terminal.write(message + '\n')
+    def write(self, message, logtoterm = False, memorylog = False):
+        if (logtoterm == True):
+            self.terminal.write(message + '\n')
         if (memorylog == True):
             self.memlog.write(message + '\n')  
         else:

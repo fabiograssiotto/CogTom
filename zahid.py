@@ -25,14 +25,14 @@ memory = BeliefMemory()
 
 # Logger
 logger = Logger()
-logger.write("Zahid - a computational implementation of the Theory of Mind model")
-logger.write("Starting simulation. Mind Steps = " + str(env.get_max_time_step()))
+logger.write("Zahid - a computational implementation of the Theory of Mind model", logtoterm = True)
+logger.write("Starting simulation. Mind Steps = " + str(env.get_max_time_step()), logtoterm = True)
 
 t = 1
 while (True):
     # Set current simulation step.
     if (env.set_time_step(t) == -1):
-        logger.write("Simulation ended", memorylog = True)
+        logger.write("Simulation ended", logtoterm = True, memorylog = True)
         logger.flush()
         logger.close()
         break
@@ -54,7 +54,7 @@ while (True):
     
     # Print out output
     mp = MindPrint(logger, t, id, edd, sam, tom, memory)
-    mp.print_header()
+    mp.print_header(termlog = True)
     mp.print()
 
     time.sleep(sleep_time)
