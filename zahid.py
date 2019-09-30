@@ -33,8 +33,10 @@ while (True):
     # Set current simulation step.
     if (env.set_time_step(t) == -1):
         logger.write("Simulation ended")
+        logger.flush()
+        logger.close()
         break
-
+        
     # Create ID module
     id = Id(env.get_agents(), env.get_drives())
 
