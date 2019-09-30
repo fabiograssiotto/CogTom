@@ -15,4 +15,7 @@ class Logger(object):
         #you might want to specify some extra behavior here.
         pass    
 
+    def close(self):
+        self.log.close()
+
 sys.stdout = Logger()
