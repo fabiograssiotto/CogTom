@@ -78,7 +78,6 @@ class ToM:
 
     def print(self, logger):
         logger.write("ToM:")
-        logger.write("Agents: ", self.agents())
-        logger.write("Drives: ", self.drives)
-        logger.write("Beliefs: ", self.tom_beliefs)
-        logger.write("")
+        logger.write("Agents: " + str(self.agents()))
+        logger.write("Drives: " + str(self.drives))
+        logger.write("Beliefs: " + str(self.tom_beliefs))

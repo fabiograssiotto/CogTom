@@ -1,4 +1,4 @@
-# Utility class for printing out mind modules information.
+# Utility class for printing out mind modules logs.
 from output.logger import Logger
 
 class MindPrint:
@@ -14,13 +14,11 @@ class MindPrint:
         
     def print_header(self):
         msg = "Evaluating Mind Step " + str(self.t)
-        self.logger.write(msg)
+        self.logger.write(msg, memorylog = True)
 
-    def print(self, onlyMemory):
-        if onlyMemory == False:
-            self.id.print(self.logger)
-            self.edd.print(self.logger)
-            self.sam.print(self.logger)
-            self.tom.print(self.logger)
-        else:
-            self.mem.print(self.logger) # Only Belief Memory
+    def print(self):
+        self.id.print(self.logger)
+        self.edd.print(self.logger)
+        self.sam.print(self.logger)
+        self.tom.print(self.logger)
+        self.mem.print(self.logger) # Only Belief Memory

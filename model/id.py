@@ -16,7 +16,5 @@ class Id:
     def print(self, logger):
         # Output ID information
         logger.write("ID:")
-        logger.write("Agents: ", self.id_agents)
-        logger.write("Drives: ", self.id_drives)
-        logger.write("")
-        
+        logger.write("Agents: " + str(self.id_agents))
+        logger.write("Drives: " + str(self.id_drives))

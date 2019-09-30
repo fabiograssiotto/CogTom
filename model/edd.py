@@ -77,11 +77,10 @@ class Edd:
     
     def print(self, logger):
         logger.write("EDD:")
-        logger.write("Entities: ", self.edd_entities[:,0])
-        logger.write("Eye_Direction: ", self.edd_eye_dir)
-        logger.write("Agent_Store: ", self.edd_agent_store)
-        logger.write("Gaze_Register:", self.edd_gaze_register)
-        logger.write("")
+        logger.write("Entities: " + str(self.edd_entities[:,0]))
+        logger.write("Eye_Direction: " + str(self.edd_eye_dir))
+        logger.write("Agent_Store: " + str(self.edd_agent_store))
+        logger.write("Gaze_Register:" + str(self.edd_gaze_register))
 
 
 

@@ -32,11 +32,11 @@ t = 1
 while (True):
     # Set current simulation step.
     if (env.set_time_step(t) == -1):
-        logger.write("Simulation ended")
+        logger.write("Simulation ended", memorylog = True)
         logger.flush()
         logger.close()
         break
-        
+
     # Create ID module
     id = Id(env.get_agents(), env.get_drives())
 
@@ -55,7 +55,7 @@ while (True):
     # Print out output
     mp = MindPrint(logger, t, id, edd, sam, tom, memory)
     mp.print_header()
-    mp.print(onlyMemory = True)
+    mp.print()
 
     time.sleep(sleep_time)
     t = t + 1

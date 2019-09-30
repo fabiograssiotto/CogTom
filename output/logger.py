@@ -3,19 +3,21 @@ import sys
 class Logger(object):
     def __init__(self):
         self.terminal = sys.stdout
-        self.log = open("output\logfile.log", "w+")
+        self.log = open("output\module.log", "w+")
+        self.memlog = open("output\memory.log", "w+")
 
-    def write(self, message):
+    def write(self, message, memorylog = False):
         self.terminal.write(message + '\n')
-        self.log.write(message + '\n')  
+        if (memorylog == True):
+            self.memlog.write(message + '\n')  
+        else:
+            self.log.write(message + '\n')
 
     def flush(self):
-        #this flush method is needed for python 3 compatibility.
-        #this handles the flush command by doing nothing.
-        #you might want to specify some extra behavior here.
         pass    
 
     def close(self):
         self.log.close()
+        self.memlog.close()
 
 sys.stdout = Logger()

@@ -27,5 +27,5 @@ class BeliefMemory:
             self.belief_df = self.belief_df.combine_first(df)
 
     def print(self, logger):
-        logger.write("Belief Memory: ")
-        logger.write(self.belief_df.to_string())
+        logger.write("Belief Memory: ", memorylog = True)
+        logger.write(self.belief_df.to_string(), memorylog = True)

@@ -38,7 +38,6 @@ class Sam:
 
     def print(self, logger):
         logger.write("SAM:")
-        logger.write("Entities on scene: ", self.entities)
-        logger.write("Agents on scene: ", self.agents)
-        logger.write("Agents with shared attention: ", self.shared_attn_list)
-        logger.write("")
+        logger.write("Entities on scene: " + str(self.entities))
+        logger.write("Agents on scene: " + str(self.agents))
+        logger.write("Agents with shared attention: " + str(self.shared_attn_list))
