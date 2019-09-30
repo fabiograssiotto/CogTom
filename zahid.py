@@ -9,6 +9,7 @@ from id import Id
 from edd import Edd
 from sam import Sam
 from tom import ToM
+from beliefmem import BeliefMemory
 from mindprint import MindPrint
 
 # Constants
@@ -29,6 +30,9 @@ eye_dir_df = pd.read_csv('eye_direction.txt',
 afford_df = pd.read_csv('affordances.txt',
                         delim_whitespace=True,
                         comment='#')
+
+# Create Belief Memory
+memory = BeliefMemory()
 
 print("Zahid - a computational implementation of the Theory of Mind model\n")
 
@@ -70,7 +74,7 @@ while (True):
     sam.process()
 
     # ...and finally the ToM module.
-    tom = ToM(afford_df, id, edd, sam)
+    tom = ToM(afford_df, id, edd, sam, memory)
     tom.process()
     
     # Print out output

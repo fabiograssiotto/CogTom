@@ -9,14 +9,16 @@ class ToM:
     # Lets start with the BELIEF mental state.
     MENTAL_STATES = ["Believes"]
 
-    def __init__(self, affordances, id, edd, sam):
+    def __init__(self, affordances, id, edd, sam, mem):
         self.afford = affordances.values.tolist() # List of affordances for the objects in the environment
         self.id = id
         self.agents = id.agents
         self.drives = id.drives()
         self.edd = edd
         self.sam = sam
+        self.memory  = mem
         self.tom_beliefs = []
+
 
     def process(self):
         # Create representations of the mental states 
@@ -24,7 +26,8 @@ class ToM:
 
         # 'Believes' mental state
         # The mental state modeled here produces descriptions in the form
-        # AGENT BELIEVES OBJECT AFFORDANCE
+        # AGENT BELIEVES OBJECT AFFORDANCE or
+        # AGENT BELIEVES OBJECT AFFORDANCE TARGET_OBJECT (due to a Drive)
         for agent in range(self.edd.edd_eyes.shape[0]):
             tom_belief = []
             # For each agent line in edd_eyes
@@ -44,6 +47,9 @@ class ToM:
                 tom_belief = self.check_drive(tom_belief)
                 self.tom_beliefs.append(tom_belief.copy())
                 del tom_belief[2:] # Only keeps Agent and Belief 
+
+            # Add the list of beliefs at the end to the Belief Memory.
+            self.memory.add(self.tom_beliefs)
         
     def check_drive(self, belief):
         # Next step is to analyse DRIVES and verify Beliefs that involve the drives in
@@ -65,6 +71,10 @@ class ToM:
                 elif (drive == 'Search'):
                     # TODO
                     break
+        if (len(belief) == 4):
+            # Belief does not have a target object, set as None.
+            belief.append('None')
+
         return belief
 
     def print(self):
