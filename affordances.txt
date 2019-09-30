@@ -1,9 +1,0 @@
-# This file presents 'affordances' for each of the objects in he scene.
-# Affordances are an object's properties that show the possible actions users can take with it.
-# For example, a Box may contain other objects, and a Ball may be hidden. 
-Object  Affordance
-Box     Contains
-Basket   Contains
-Ball    Hides
-Anne    Exists
-Sally   Exists
