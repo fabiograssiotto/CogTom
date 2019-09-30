@@ -13,4 +13,7 @@ class MindPrint:
             self.id.print()
             self.edd.print()
             self.sam.print()
-        self.tom.print() # Always print Tom output
+            self.tom.print(False)
+        else:
+            self.tom.print(True) # Only Belief Memory
+        print()

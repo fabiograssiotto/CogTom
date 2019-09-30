@@ -77,9 +77,11 @@ class ToM:
 
         return belief
 
-    def print(self):
-        print("ToM:")
-        print("Agents: ", self.agents())
-        print("Drives: ", self.drives)
-        print("Beliefs: ", self.tom_beliefs)
-        print("\n")
+    def print(self, onlyMemory):
+        if (onlyMemory):
+            self.memory.print()
+        else:
+            print("ToM:")
+            print("Agents: ", self.agents())
+            print("Drives: ", self.drives)
+            print("Beliefs: ", self.tom_beliefs)
