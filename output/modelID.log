@@ -1,0 +1,24 @@
+Evaluating Mind Step 1
+ID:
+Agents: ['Sally', 'Anne']
+Drives: []
+Evaluating Mind Step 2
+ID:
+Agents: ['Sally', 'Anne']
+Drives: [['Sally', 'Hide', 'Ball', 'Basket']]
+Evaluating Mind Step 3
+ID:
+Agents: ['Anne']
+Drives: []
+Evaluating Mind Step 4
+ID:
+Agents: ['Anne']
+Drives: [['Anne', 'Get', 'Ball', 'Basket']]
+Evaluating Mind Step 5
+ID:
+Agents: ['Anne']
+Drives: [['Anne', 'Hide', 'Ball', 'Box']]
+Evaluating Mind Step 6
+ID:
+Agents: ['Sally']
+Drives: [['Sally', 'Search', 'Ball', 'None']]
