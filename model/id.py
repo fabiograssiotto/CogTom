@@ -2,8 +2,14 @@
 # ID function has two functions:
 #  - interprets motion stimuli to identify agents.
 #  - identifies drives for each agent.
-class Id:
-    def __init__(self, agents, drives):
+from output.logger import Logger
+from model.model import Model
+
+class Id(Model):
+    def __init__(self):
+        Model.__init__(self, Logger.MODEL_ID)
+
+    def set(self, agents, drives):
         self.id_agents = agents
         self.id_drives = drives
 
@@ -13,8 +19,10 @@ class Id:
     def drives(self):
         return self.id_drives
     
-    def print(self, logger):
+    def print(self, t):
+        msg = "Evaluating Mind Step " + str(t)
+        self.logger.write(msg)
         # Output ID information
-        logger.write("ID:")
-        logger.write("Agents: " + str(self.id_agents))
-        logger.write("Drives: " + str(self.id_drives))
+        self.logger.write("ID:")
+        self.logger.write("Agents: " + str(self.id_agents))
+        self.logger.write("Drives: " + str(self.id_drives))

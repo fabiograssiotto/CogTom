@@ -2,6 +2,8 @@
 # ToM represents mental states
 # described as triads of form Agent-Mental State-Object
 import numpy as np
+from output.logger import Logger
+from model.model import Model
 
 class ToM:
 
@@ -9,7 +11,10 @@ class ToM:
     # Lets start with the BELIEF mental state.
     MENTAL_STATES = ["Believes"]
 
-    def __init__(self, affordances, id, edd, sam, mem):
+    def __init__(self):
+        Model.__init__(self, Logger.MODEL_TOM)
+
+    def set(self, affordances, id, edd, sam, mem):
         self.afford = affordances
         self.id = id
         self.agents = id.agents
@@ -76,8 +81,10 @@ class ToM:
 
         return belief
 
-    def print(self, logger):
-        logger.write("ToM:")
-        logger.write("Agents: " + str(self.agents()))
-        logger.write("Drives: " + str(self.drives))
-        logger.write("Beliefs: " + str(self.tom_beliefs))
+    def print(self, t):
+        msg = "Evaluating Mind Step " + str(t)
+        self.logger.write(msg)
+        self.logger.write("ToM:")
+        self.logger.write("Agents: " + str(self.agents()))
+        self.logger.write("Drives: " + str(self.drives))
+        self.logger.write("Beliefs: " + str(self.tom_beliefs))

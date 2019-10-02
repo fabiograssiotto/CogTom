@@ -5,10 +5,15 @@
 import numpy as np
 
 from model.edd import Edd
+from model.model import Model
+from output.logger import Logger
 
-class Sam:
+class Sam(Model):
 
-    def __init__(self, edd):
+    def __init__(self):
+        Model.__init__(self, Logger.MODEL_SAM)
+        
+    def set(self, edd):
         self.edd = edd
         self.entities = [] # List of entities on the scene
         self.agents = [] # List of agents on the scene
@@ -36,8 +41,10 @@ class Sam:
                     shared_attn.append(self.agents[ag_idx])
                 self.shared_attn_list.append(shared_attn)
 
-    def print(self, logger):
-        logger.write("SAM:")
-        logger.write("Entities on scene: " + str(self.entities))
-        logger.write("Agents on scene: " + str(self.agents))
-        logger.write("Agents with shared attention: " + str(self.shared_attn_list))
+    def print(self, t):
+        msg = "Evaluating Mind Step " + str(t)
+        self.logger.write(msg)
+        self.logger.write("SAM:")
+        self.logger.write("Entities on scene: " + str(self.entities))
+        self.logger.write("Agents on scene: " + str(self.agents))
+        self.logger.write("Agents with shared attention: " + str(self.shared_attn_list))

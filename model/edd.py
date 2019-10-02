@@ -4,10 +4,15 @@
 #   computes whether eyes are directed towards agents/objects
 #   infers agents knowledge attributing perceptual states.
 import numpy as np
+from output.logger import Logger
+from model.model import Model
 
-class Edd:
+class Edd(Model):
 
-    def __init__(self, entities_arr, agents):
+    def __init__(self):
+        Model.__init__(self, Logger.MODEL_EDD)
+
+    def set(self, entities_arr, agents):
         self.edd_entities = entities_arr
         # Assume that all agents have eyes.
         self.edd_eyes = np.array(agents)
@@ -75,12 +80,14 @@ class Edd:
         # Add list to np array.
         self.edd_gaze_register = np.array(mg_lst)
     
-    def print(self, logger):
-        logger.write("EDD:")
-        logger.write("Entities: " + str(self.edd_entities[:,0]))
-        logger.write("Eye_Direction: " + str(self.edd_eye_dir))
-        logger.write("Agent_Store: " + str(self.edd_agent_store))
-        logger.write("Gaze_Register:" + str(self.edd_gaze_register))
+    def print(self, t):
+        msg = "Evaluating Mind Step " + str(t)
+        self.logger.write(msg)
+        self.logger.write("EDD:")
+        self.logger.write("Entities: " + str(self.edd_entities[:,0]))
+        self.logger.write("Eye_Direction: " + str(self.edd_eye_dir))
+        self.logger.write("Agent_Store: " + str(self.edd_agent_store))
+        self.logger.write("Gaze_Register:" + str(self.edd_gaze_register))
 
 
 
