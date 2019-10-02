@@ -32,4 +32,4 @@ class BeliefMemory:
         msg = "Evaluating Mind Step " + str(t)
         self.logger.write(msg)
         self.logger.write("Belief Memory: ")
-        self.logger.write(self.belief_df.to_string())
+        self.logger.write(self.belief_df.reset_index(drop = True).to_string())
