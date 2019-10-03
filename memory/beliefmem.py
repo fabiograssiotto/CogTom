@@ -28,6 +28,25 @@ class BeliefMemory:
             self.belief_df.update(df)
             self.belief_df = self.belief_df.combine_first(df)
 
+    def get_people(self):
+        # Returns the set of the agents in the environment
+        return set(self.belief_df['Agent'].unique())
+
+    def get_objects(self):
+        agents = self.get_people()
+        # set of objects
+        objects = set(self.belief_df['Object'].unique()) - agents
+        # Remove agents from objects list.
+        return objects
+
+    def get_person_beliefs(self, person):
+        df = self.belief_df[self.belief_df['Agent'] == person]
+        return df
+    
+    def get_object_beliefs(self, object):
+        df = self.belief_df[self.belief_df['Object'] == object]
+        return df
+
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
         self.logger.write(msg)

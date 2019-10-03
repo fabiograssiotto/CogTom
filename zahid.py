@@ -12,6 +12,7 @@ from model.tom import ToM
 from memory.beliefmem import BeliefMemory
 from input.environment import Environment
 from output.logger import Logger
+from query.query import Query
 
 # Constants
 sleep_time = 0.1 # 5 seconds sleep time between Mind evaluations.
@@ -31,6 +32,7 @@ tom = ToM()
 # Logger
 logger = Logger(module = Logger.MODULES_MAIN)
 logger.write("Zahid - a computational implementation of the Theory of Mind model", logtoterm = True)
+logger.write("", logtoterm = True)
 logger.write("Starting simulation. Mind Steps = " + str(env.get_max_time_step()), logtoterm = True)
 
 t = 1
@@ -38,8 +40,6 @@ while (True):
     # Set current simulation step.
     if (env.set_time_step(t) == -1):
         logger.write("Simulation ended", logtoterm = True)
-        logger.flush()
-        logger.close()
         break
 
     # Start ID module
@@ -68,3 +68,16 @@ while (True):
 
     time.sleep(sleep_time)
     t = t + 1
+
+# Start Query Module to check understanding of the false belief tasks.
+logger.write("", logtoterm = True)
+query = Query(memory)
+query.greet()
+while (True):
+    # Run until the user is satisfied.
+    if (query.run() == -1):
+        break
+
+# Housekeeping
+logger.flush()
+logger.close()
