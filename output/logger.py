@@ -13,12 +13,12 @@ class Logger(object):
     def __init__(self, module, model = None):
         self.terminal = sys.stdout
         if (module == Logger.MODULES_MAIN):
-            self.mainlog = open("output\main.log", "w+")
+            self.mainlog = open("output/main.log", "w+")
         elif (module == Logger.MODULES_MODEL):
-            file_name = "output\model" + model + ".log"
+            file_name = "output/model" + model + ".log"
             self.modellog = open(file_name, "w+")
         elif (module == Logger.MODULES_MEMORY):
-            self.memlog = open("output\memory.log", "w+")
+            self.memlog = open("output/memory.log", "w+")
 
         self.module = module
 
