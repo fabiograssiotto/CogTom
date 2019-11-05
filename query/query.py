@@ -7,27 +7,46 @@ class Query:
 
     def __init__(self, mem):
         self.mem = mem
-        
+    
+    def run(self, t):
+        # Start Query Module to check understanding of the false belief tasks.
+        ret = 0
+        if (t == 1):
+            self.greet()
+        print("This is mind step " + str(t))
+        while (True):
+            # Run until the user is satisfied, or quits the program.
+            res = self.exec()
+            if (res != 0):
+                ret = res
+                break
+        return ret
+
     def greet(self):
         print("Hello, I am Zahid.")
+        print()
+        print("List of commands I understand:")
+        self.print_help()
+
+    def print_entities(self):
         print("I know about the following people: ", self.mem.get_people())
         print("And about the following objects: ", self.mem.get_objects())
         print()
 
-    def print_options(self):
-        print("Please input: ")
-        print("1 - to know about people")
-        print("2 - to know about objects")
-        print("3 - to tell me I can go")
-    
-    def run(self):
-        self.print_options()
-        opt = input("")
+    def print_help(self):
+        print("p - to ask me about people")
+        print("o - to ask me about objects")
+        print("g - to keep going")
+        print("q - quit")
         print()
-        if (opt == "3"):
-            print ("Goodbye.")
+    
+    def exec(self):
+        opt = input("Enter command: ")
+        if (opt == "q"):
+            return -2
+        elif (opt == "g"):
             return -1
-        elif (opt == "1"):
+        elif (opt == "p"):
             print("About what person you want to know about?")
             print(self.mem.get_people())
             person = input("")
@@ -40,7 +59,7 @@ class Query:
                 print(data.to_string(header = False, index = False))
                 print()
                 return 0
-        elif (opt == "2"):
+        elif (opt == "o"):
             print("About what object you want to know about?")
             print(self.mem.get_objects())
             object = input("")
