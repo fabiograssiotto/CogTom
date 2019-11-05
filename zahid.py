@@ -23,6 +23,9 @@ env = Environment()
 # Create Belief Memory
 memory = BeliefMemory()
 
+# Create Query module
+query = Query(memory)
+
 # Create Model modules instances
 id = Id()
 edd = Edd()
@@ -58,8 +61,6 @@ while (True):
     tom.process()
     
     # Print out outputs from all modules and memory.
-    msg = "Evaluating Mind Step " + str(t)
-    logger.write(msg, logtoterm = True)
     id.print(t)
     edd.print(t)
     sam.print(t)
@@ -67,16 +68,15 @@ while (True):
     memory.print(t)
 
     time.sleep(sleep_time)
-    t = t + 1
 
-# Start Query Module to check understanding of the false belief tasks.
-logger.write("", logtoterm = True)
-query = Query(memory)
-query.greet()
-while (True):
-    # Run until the user is satisfied.
-    if (query.run() == -1):
+    # Starting query module
+    logger.write("", logtoterm = True)
+    if (query.run(t) == -2):
+        # Quits
+        logger.write("Simulation ended", logtoterm = True)
         break
+
+    t = t + 1
 
 # Housekeeping
 logger.flush()
