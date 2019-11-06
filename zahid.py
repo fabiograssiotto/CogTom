@@ -14,9 +14,6 @@ from input.environment import Environment
 from output.logger import Logger
 from query.query import Query
 
-# Constants
-sleep_time = 0.1 # 5 seconds sleep time between Mind evaluations.
-
 # Create handler for Environment Inputs
 env = Environment()
 
@@ -67,15 +64,13 @@ while (True):
     tom.print(t)
     memory.print(t)
 
-    time.sleep(sleep_time)
-
     # Starting query module
-    logger.write("", logtoterm = True)
+    logger.write("Starting query module, mindstep = " + str(t))
     if (query.run(t) == -2):
         # Quits
         logger.write("Simulation ended", logtoterm = True)
         break
-
+    # Update time step
     t = t + 1
 
 # Housekeeping
