@@ -18,6 +18,11 @@ class Environment:
                                       delim_whitespace=True,
                                       comment='#')
 
+        # Intention Detection System, identifies intentions for the agents in the visual field.
+        self.intention_df = pd.read_csv('input/intentions.txt',
+                                        delim_whitespace=True,
+                                        comment='#')
+
         # Affordances, or properties, for the objects in the scene.
         self.afford_df = pd.read_csv('input/affordances.txt',
                                      delim_whitespace=True,
@@ -29,12 +34,14 @@ class Environment:
         # Returns -1 if the environment indicates the end of the simulation.
         self.visual_info = self.visual_df.loc[self.visual_df['t'] == t]
         self.eye_dir_info = self.eye_dir_df.loc[self.eye_dir_df['t'] == t]
+        self.intention_info = self.intention_df.loc[self.intention_df['t'] == t]
         if (self.visual_info.empty == True):
             # Empty dataframe, so there are no more simulation steps.
             return -1
         else:
             self.visual_info = self.visual_info.drop(columns='t')
             self.eye_dir_info = self.eye_dir_info.drop(columns='t')
+            self.intention_info = self.intention_info.drop(columns='t')
             return 0
 
     def get_max_time_step(self):
@@ -63,3 +70,6 @@ class Environment:
     def get_affordances(self):
         return self.afford_df.values.tolist()
     
+    def get_intentions(self):
+        intentions = self.intention_info.loc[self.intention_info['Intention'] != 'None']
+        return intentions[['Agent', 'Intention']].values.tolist()
