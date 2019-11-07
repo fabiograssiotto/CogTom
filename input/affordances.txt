@@ -1,9 +1,10 @@
 # This file presents 'affordances' for each of the objects in he scene.
 # Affordances are an object's properties that show the possible actions users can take with it.
-# For example, a Box may contain other objects, and a Ball may be hidden. 
+# For example, a Box may contain other objects, and a Ball may be hidden.
+# Affordances, for the purpose of this system, are immutable properties during the simulation timeline.
 Object  Affordance
 Box     Contains
-Basket   Contains
+Basket  Contains
 Ball    Hides
 Anne    Exists
 Sally   Exists
