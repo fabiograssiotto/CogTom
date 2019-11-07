@@ -13,7 +13,7 @@ class Query:
         ret = 0
         if (t == 1):
             self.greet()
-        print("This is mind step " + str(t))
+        print("This is mind step " + str(t) + ".")
         while (True):
             # Run until the user is satisfied, or quits the program.
             res = self.exec()
@@ -25,26 +25,23 @@ class Query:
     def greet(self):
         print("Hello, I am Zahid.")
         print()
-        print("List of commands I understand:")
+        print("This is the list of commands I understand.")
         self.print_help()
 
-    def print_entities(self):
-        print("I know about the following people: ", self.mem.get_people())
-        print("And about the following objects: ", self.mem.get_objects())
-        print()
-
     def print_help(self):
-        print("p - to ask me about people")
-        print("o - to ask me about objects")
-        print("g - to keep going")
-        print("q - quit")
+        print("To ask me about people: 'p'")
+        print("To ask me about objects: 'o'")
+        print("To go to the next mind step: 'enter'")
+        print("To quit the simulation: 'q'")
         print()
     
     def exec(self):
         opt = input("Enter command: ")
         if (opt == "q"):
+            # Quits the simulation
             return -2
-        elif (opt == "g"):
+        elif (opt == ""):
+            # Next mind step
             return -1
         elif (opt == "p"):
             print("About what person you want to know about?")
@@ -54,7 +51,7 @@ class Query:
             data = self.mem.get_person_beliefs(person)
             if (data.empty):
                 print("Sorry, I cannot understand that.")
-                return -1
+                return 0
             else:
                 print(data.to_string(header = False, index = False))
                 print()
@@ -67,12 +64,12 @@ class Query:
             data = self.mem.get_object_beliefs(object)
             if (data.empty):
                 print("Sorry, I cannot understand that.")
-                return -1
+                return 0
             else:
                 print(data.to_string(header = False, index = False))
                 print()
                 return 0
         else:
-            # something wrong.
+            # Unknown command
             print("Sorry, I cannot understand that.")
-            return -1
+            return 0
