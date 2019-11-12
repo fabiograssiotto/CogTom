@@ -7,8 +7,12 @@ import numpy as np
 class Environment:
 
     def __init__(self):
-        # Basic input for scene. Start by accessing the camera input and identifying entities
-        # in the scene.
+        # Textual descriptions for each scene
+        self.scene_df = pd.read_csv('input/scenes.txt',
+                                    sep = ':',
+                                    comment = '#')
+
+        # Identifying entities (agents and objects) in the scene.
         self.entities_df = pd.read_csv('input/entities.txt',
                                         delim_whitespace=True,
                                         comment='#')
@@ -32,6 +36,7 @@ class Environment:
     def set_time_step(self, t):
         # Sets the current time step.
         # Returns -1 if the environment indicates the end of the simulation.
+        self.scene_info = self.scene_df.loc[self.scene_df['t'] == t]
         self.entities_info = self.entities_df.loc[self.entities_df['t'] == t]
         self.eye_dir_info = self.eye_dir_df.loc[self.eye_dir_df['t'] == t]
         self.intention_info = self.intention_df.loc[self.intention_df['t'] == t]
@@ -39,6 +44,7 @@ class Environment:
             # Empty dataframe, so there are no more simulation steps.
             return -1
         else:
+            self.scene_info = self.scene_info.drop(columns='t')
             self.entities_info = self.entities_info.drop(columns='t')
             self.eye_dir_info = self.eye_dir_info.drop(columns='t')
             self.intention_info = self.intention_info.drop(columns='t')
@@ -46,6 +52,9 @@ class Environment:
 
     def get_max_time_step(self):
         return self.entities_df['t'].max()
+
+    def get_scene(self):
+        return str(self.scene_info['Scene'].values[0])
 
     def get_agents(self):
         # Returns a list of the agents in the current time step.
