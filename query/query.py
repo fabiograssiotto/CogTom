@@ -55,7 +55,14 @@ class Query:
                 print("Sorry, I cannot understand that.")
                 return 0
             else:
-                print(data.to_string(header = False, index = False))
+                str_list = data.to_string(header = False, index = False).split('\n')
+                for blf in str_list:
+                    # Remove extra whitespaces
+                    s = " ".join(blf.split())
+                    # Remove 'None' if at the end of the sentence
+                    if (s.split()[-1] == 'None'):
+                        s = " ".join(s.split()[:-1])
+                    print(s)    
                 print()
                 return 0
         elif (opt == "o"):
@@ -68,7 +75,14 @@ class Query:
                 print("Sorry, I cannot understand that.")
                 return 0
             else:
-                print(data.to_string(header = False, index = False))
+                str_list = data.to_string(header = False, index = False).split('\n')
+                for blf in str_list:
+                    # Remove extra whitespaces
+                    s = " ".join(blf.split())
+                    # Remove 'None' if at the end of the sentence
+                    if (s.split()[-1] == 'None'):
+                        s = " ".join(s.split()[:-1])
+                    print(s)    
                 print()
                 return 0
         else:
