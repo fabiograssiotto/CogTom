@@ -3,7 +3,7 @@ The intent of this software program is to evaluate false belief tasks.
 
 Directory structure:  
 \input - environment inputs  
-\memory - simulation for Belief Memory  
+\memory - simulation for Belief Memory, Affordances and Intentions  
 \model - Theory of Mind model modules  
 \output - utility classes and output logs  
 \query - query module for task evaluation
