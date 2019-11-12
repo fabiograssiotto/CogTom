@@ -1,0 +1,60 @@
+Evaluating Mind Step 1
+EDD:
+Entities: ['Sally' 'Anne' 'Basket' 'Box']
+Eye_Direction: [[0 1 1 1]
+ [1 0 1 1]]
+Agent_Store: [['Anne' 'Basket' 'Box']
+ ['Sally' 'Basket' 'Box']]
+Gaze_Register:[['Sally' 'Anne']]
+Evaluating Mind Step 2
+EDD:
+Entities: ['Sally' 'Anne' 'Basket' 'Box' 'Ball']
+Eye_Direction: [[0 1 1 1 1]
+ [1 0 1 1 1]]
+Agent_Store: [['Anne' 'Basket' 'Box' 'Ball']
+ ['Sally' 'Basket' 'Box' 'Ball']]
+Gaze_Register:[['Sally' 'Anne']]
+Evaluating Mind Step 3
+EDD:
+Entities: ['Sally' 'Anne' 'Basket' 'Box']
+Eye_Direction: [[0 0 1 1]
+ [0 0 1 1]]
+Agent_Store: [['Basket' 'Box']
+ ['Basket' 'Box']]
+Gaze_Register:[]
+Evaluating Mind Step 4
+EDD:
+Entities: ['Anne' 'Basket' 'Box']
+Eye_Direction: [[0 1 1]]
+Agent_Store: [['Basket' 'Box']]
+Gaze_Register:[]
+Evaluating Mind Step 5
+EDD:
+Entities: ['Anne' 'Basket' 'Box']
+Eye_Direction: [[0 1 1]]
+Agent_Store: [['Basket' 'Box']]
+Gaze_Register:[]
+Evaluating Mind Step 6
+EDD:
+Entities: ['Anne' 'Basket' 'Box' 'Ball']
+Eye_Direction: [[0 1 1 1]]
+Agent_Store: [['Basket' 'Box' 'Ball']]
+Gaze_Register:[]
+Evaluating Mind Step 7
+EDD:
+Entities: ['Anne' 'Basket' 'Box']
+Eye_Direction: [[0 1 1]]
+Agent_Store: [['Basket' 'Box']]
+Gaze_Register:[]
+Evaluating Mind Step 8
+EDD:
+Entities: ['Sally' 'Basket' 'Box']
+Eye_Direction: [[0 1 0]]
+Agent_Store: [['Basket']]
+Gaze_Register:[]
+Evaluating Mind Step 9
+EDD:
+Entities: ['Sally' 'Basket' 'Box']
+Eye_Direction: [[0 1 1]]
+Agent_Store: [['Basket' 'Box']]
+Gaze_Register:[]

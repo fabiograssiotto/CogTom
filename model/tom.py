@@ -58,13 +58,18 @@ class ToM:
     def check_intentions(self, belief):
         # Next step is to analyse INTENTIONS and verify Beliefs that could be 
         # modified based on intentions detected in the environment.
+
+        blf_agt = belief[0]
+        blf_obj = belief[2]
+        blf_afd = belief[3]
+
         for intention in self.intentions:
             agt = intention[0]
             intent = intention[1]
             obj = intention[2]
             tgt = intention[3]
 
-            if (belief[2] == obj):
+            if (blf_obj == obj):
                 # ie we only need to analyse an intention 
                 # if the object is the same as the object in the current belief.
                 belief = self.map_intention(intent, obj, tgt, belief)
@@ -81,9 +86,9 @@ class ToM:
             'ReachFor': self.reachFor,
             'Puts': self.put,
             'Gets': self.get,
-            'Exits': self.exit,
-            'Enters': self.enter,
-            'Search': self.search
+            'Exits': self.skip,
+            'Enters': self.skip,
+            'Search': self.skip
         }
         # Get the function from mapper dictionary
         func = mapper.get(intent)
@@ -95,6 +100,9 @@ class ToM:
         return belief
 
     def reachFor(self, obj, tgt, belief):
+        # Reaching for an object results
+        # on the object ending up on the agent hand.
+        belief[3] = 'OnHand'
         return belief
     
     def put(self, obj, tgt, belief):
@@ -102,16 +110,6 @@ class ToM:
 
     def get(self, obj, tgt, belief):
         return belief
-    
-    def exit(self, obj, tgt, belief):
-        return belief
-
-    def enter(self, obj, tgt, belief):
-        return belief
-
-    def search(self, obj, tgt, belief):
-        return belief
-    
 
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)

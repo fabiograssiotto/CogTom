@@ -1,7 +1,7 @@
 # This file simulates a camera input identifying a scene.
 # The camera system identifies:
 #   - a list of entities in the scene.
-#   - if the entity is moving, what will qualify it as an agent
+#   - if the entity is an agent.
 # The column t specifies the time step for the camera information. 
 t   Entity  Is_Agent   
 1   Sally   True        
