@@ -8,9 +8,11 @@ t   Agent   Object
 1   Sally   Anne
 1   Sally   Basket
 1   Sally   Box
+1   Sally   Ball
 1   Anne    Sally
 1   Anne    Basket
 1   Anne    Box
+1   Anne    Ball
 2   Sally   Anne
 2   Sally   Basket
 2   Sally   Box
