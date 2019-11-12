@@ -72,7 +72,7 @@ class ToM:
             if (blf_obj == obj):
                 # ie we only need to analyse an intention 
                 # if the object is the same as the object in the current belief.
-                belief = self.map_intention(intent, obj, tgt, belief)
+                belief = self.map_intention(intent, agt, obj, tgt, belief)
 
         if (len(belief) == 4):
             # Belief does not have a target object, set as None.
@@ -80,7 +80,7 @@ class ToM:
 
         return belief
 
-    def map_intention(self, intent, obj, tgt, belief):
+    def map_intention(self, intent, agt, obj, tgt, belief):
         mapper = {
             'None': self.skip,
             'ReachFor': self.reachFor,
@@ -93,22 +93,27 @@ class ToM:
         # Get the function from mapper dictionary
         func = mapper.get(intent)
         # Execute the function
-        return func(obj, tgt, belief)
+        return func(agt, obj, tgt, belief)
 
-    def skip(self, obj, tgt, belief):
+    def skip(self, agt, obj, tgt, belief):
         # Nothing to do
         return belief
 
-    def reachFor(self, obj, tgt, belief):
+    def reachFor(self, agt,obj, tgt, belief):
         # Reaching for an object results
         # on the object ending up on the agent hand.
         belief[3] = 'OnHand'
+        belief.append('Of ' + agt)
         return belief
     
-    def put(self, obj, tgt, belief):
+    def put(self, agt, obj, tgt, belief):
+        belief[3] = 'HiddenIn'
+        belief[4] = tgt
         return belief
 
-    def get(self, obj, tgt, belief):
+    def get(self, agt, obj, tgt, belief):
+        belief[3] = 'OnHand'
+        belief.append('Of ' + agt)
         return belief
 
     def print(self, t):
