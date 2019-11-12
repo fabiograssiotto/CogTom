@@ -44,6 +44,7 @@ class Query:
             return -2
         elif (opt == ""):
             # Next mind step
+            print()
             return -1
         elif (opt == "p"):
             print("About what person you want to know about?")
