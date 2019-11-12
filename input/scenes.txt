@@ -1,0 +1,12 @@
+# This file describes what is the current scene
+# the system is analysing in textual form.
+t:Scene
+1:Sally and Anne with Basket, Box and Ball on the floor.
+2:b
+3:c
+4:d
+5:e
+6:f
+7:g
+8:h
+9:i
