@@ -7,7 +7,8 @@ t   Entity  Is_Agent
 1   Sally   True        
 1   Anne    True        
 1   Basket  False       
-1   Box     False      
+1   Box     False 
+1   Ball    False     
 2   Sally   True        
 2   Anne    True        
 2   Basket  False       
@@ -36,4 +37,3 @@ t   Entity  Is_Agent
 9   Sally   True
 9   Basket  False
 9   Box     False
-
