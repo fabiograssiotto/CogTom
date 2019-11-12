@@ -31,7 +31,7 @@ class ToM:
         # 'Believes' mental state
         # The mental state modeled here produces descriptions in the form
         # AGENT BELIEVES OBJECT AFFORDANCE or
-        # AGENT BELIEVES OBJECT AFFORDANCE TARGET_OBJECT (due to a Drive)
+        # AGENT BELIEVES OBJECT AFFORDANCE TARGET_OBJECT (due to an intention)
         for agent in range(self.edd.edd_eyes.shape[0]):
             tom_belief = []
             # For each agent line in edd_eyes
@@ -64,7 +64,10 @@ class ToM:
             obj = intention[2]
             tgt = intention[3]
 
-            belief = self.map_intention(intent, obj, tgt, belief)
+            if (belief[2] == obj):
+                # ie we only need to analyse an intention 
+                # if the object is the same as the object in the current belief.
+                belief = self.map_intention(intent, obj, tgt, belief)
 
         if (len(belief) == 4):
             # Belief does not have a target object, set as None.
