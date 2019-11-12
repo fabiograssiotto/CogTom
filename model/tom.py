@@ -56,33 +56,59 @@ class ToM:
             self.memory.add(self.tom_beliefs)
         
     def check_intentions(self, belief):
-        # Next step is to analyse DRIVES and verify Beliefs that involve the drives in
-        # the current mind step.
-        for intent in self.intentions:
-            this_intent = intent[1]
-            this_intent_obj = intent[2]
-            this_intent_tgt = intent[3]
+        # Next step is to analyse INTENTIONS and verify Beliefs that could be 
+        # modified based on intentions detected in the environment.
+        for intention in self.intentions:
+            agt = intention[0]
+            intent = intention[1]
+            obj = intention[2]
+            tgt = intention[3]
 
-            # How are beliefs modified by the intentions detected in the environment?
-
-            # Check if this belief is modified by the at least one of the drives.
-            #if belief[2] == drive_obj:
-            #    if (drive == 'Hide'):
-            #        belief[3] = 'Hidden in'
-            #        belief.append(drive_tgt)
-            #        break
-            #    elif (drive == 'Get'):
-                    # TODO
-            #        break
-            #    elif (drive == 'Search'):
-            #        # TODO
-            #        break
+            belief = self.map_intention(intent, obj, tgt, belief)
 
         if (len(belief) == 4):
             # Belief does not have a target object, set as None.
             belief.append('None')
 
         return belief
+
+    def map_intention(self, intent, obj, tgt, belief):
+        mapper = {
+            'None': self.skip,
+            'ReachFor': self.reachFor,
+            'Puts': self.put,
+            'Gets': self.get,
+            'Exits': self.exit,
+            'Enters': self.enter,
+            'Search': self.search
+        }
+        # Get the function from mapper dictionary
+        func = mapper.get(intent)
+        # Execute the function
+        return func(obj, tgt, belief)
+
+    def skip(self, obj, tgt, belief):
+        # Nothing to do
+        return belief
+
+    def reachFor(self, obj, tgt, belief):
+        return belief
+    
+    def put(self, obj, tgt, belief):
+        return belief
+
+    def get(self, obj, tgt, belief):
+        return belief
+    
+    def exit(self, obj, tgt, belief):
+        return belief
+
+    def enter(self, obj, tgt, belief):
+        return belief
+
+    def search(self, obj, tgt, belief):
+        return belief
+    
 
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
