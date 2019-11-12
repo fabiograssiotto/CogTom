@@ -3,6 +3,7 @@
 # described as triads of form Agent-Mental State-Object
 import numpy as np
 from output.logger import Logger
+from memory.affordancehandler import AffordanceHandler
 from memory.intentionhandler import IntentionHandler
 from model.model import Model
 
@@ -16,7 +17,7 @@ class ToM:
         Model.__init__(self, Logger.MODEL_TOM)
 
     def set(self, affordances,intentions, id, edd, sam, mem):
-        self.afford = affordances
+        self.affordhdlr = AffordanceHandler(affordances)
         self.inthdlr = IntentionHandler(intentions)
         self.id = id
         self.agents = id.agents
@@ -42,11 +43,10 @@ class ToM:
             for ent in range(self.edd.edd_agent_store.shape[1]):
                 obj = self.edd.edd_agent_store[agent][ent]
                 tom_belief.append(obj)
-                for sublist in self.afford:
-                    if sublist[0] == obj:
-                        # Object has an affordance.
-                        tom_belief.append(sublist[1])
-                        break
+                
+                # Check any affordances the entities may have.
+                tom_belief = self.affordhdlr.check_affordances(tom_belief)
+
                 # Check if intentions from the environment 
                 # are likely to change beliefs.
                 tom_belief = self.inthdlr.check_intentions(tom_belief)
