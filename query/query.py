@@ -5,8 +5,9 @@ from memory import beliefmem
 
 class Query:
 
-    def __init__(self, mem):
+    def __init__(self, mem, env):
         self.mem = mem
+        self.env = env
     
     def run(self, t):
         # Start Query Module to check understanding of the false belief tasks.
@@ -14,6 +15,7 @@ class Query:
         if (t == 1):
             self.greet()
         print("This is mind step " + str(t) + ".")
+        print("Scene " + str(t) + ": " + self.env.get_scene())
         while (True):
             # Run until the user is satisfied, or quits the program.
             res = self.exec()
