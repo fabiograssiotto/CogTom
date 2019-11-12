@@ -2,8 +2,18 @@
 # The camera system identifies the intention of an agent
 # based on movement and posture information in the scene.
 # The column t specifies the time step for the camera information. 
-t   Agent   Intention
-1   Sally   None
-1   Anne    None
-2   Sally
-2   Anne
+t   Agent   Intention   Object  Target
+1   Sally   None        None    None
+1   Anne    None        None    None 
+2   Sally   ReachFor    Ball    None
+2   Anne    None        None    None
+3   Sally   Puts        Ball    Basket
+3   Anne    None        None    None
+4   Sally   Exits       None    None
+4   Anne    None        None    None
+5   Anne    ReachFor    Basket  None
+6   Anne    Gets        Ball    Basket
+7   Anne    Puts        Ball    Box
+8   Anne    Exits       None    None
+8   Sally   Enters      None    None
+9   Sally   Search      Ball    None

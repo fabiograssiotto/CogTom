@@ -3,28 +3,3 @@ SAM:
 Entities on scene: ['Sally', 'Anne', 'Basket', 'Box']
 Agents on scene: ['Sally', 'Anne']
 Agents with shared attention: [['Basket', 'Sally', 'Anne'], ['Box', 'Sally', 'Anne']]
-Evaluating Mind Step 2
-SAM:
-Entities on scene: ['Sally', 'Anne', 'Basket', 'Box', 'Ball']
-Agents on scene: ['Sally', 'Anne']
-Agents with shared attention: [['Basket', 'Sally', 'Anne'], ['Box', 'Sally', 'Anne'], ['Ball', 'Sally', 'Anne']]
-Evaluating Mind Step 3
-SAM:
-Entities on scene: ['Anne', 'Basket', 'Box']
-Agents on scene: ['Anne']
-Agents with shared attention: []
-Evaluating Mind Step 4
-SAM:
-Entities on scene: ['Anne', 'Basket', 'Box', 'Ball']
-Agents on scene: ['Anne']
-Agents with shared attention: []
-Evaluating Mind Step 5
-SAM:
-Entities on scene: ['Anne', 'Basket', 'Box', 'Ball']
-Agents on scene: ['Anne']
-Agents with shared attention: []
-Evaluating Mind Step 6
-SAM:
-Entities on scene: ['Sally', 'Box', 'Basket']
-Agents on scene: ['Sally']
-Agents with shared attention: []

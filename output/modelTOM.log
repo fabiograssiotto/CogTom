@@ -3,28 +3,3 @@ ToM:
 Agents: ['Sally', 'Anne']
 Drives: []
 Beliefs: [['Sally', 'Believes', 'Anne', 'Exists', 'None'], ['Sally', 'Believes', 'Basket', 'Contains', 'None'], ['Sally', 'Believes', 'Box', 'Contains', 'None'], ['Anne', 'Believes', 'Sally', 'Exists', 'None'], ['Anne', 'Believes', 'Basket', 'Contains', 'None'], ['Anne', 'Believes', 'Box', 'Contains', 'None']]
-Evaluating Mind Step 2
-ToM:
-Agents: ['Sally', 'Anne']
-Drives: [['Sally', 'Hide', 'Ball', 'Basket']]
-Beliefs: [['Sally', 'Believes', 'Anne', 'Exists', 'None'], ['Sally', 'Believes', 'Basket', 'Contains', 'None'], ['Sally', 'Believes', 'Box', 'Contains', 'None'], ['Sally', 'Believes', 'Ball', 'Hidden in', 'Basket'], ['Anne', 'Believes', 'Sally', 'Exists', 'None'], ['Anne', 'Believes', 'Basket', 'Contains', 'None'], ['Anne', 'Believes', 'Box', 'Contains', 'None'], ['Anne', 'Believes', 'Ball', 'Hidden in', 'Basket']]
-Evaluating Mind Step 3
-ToM:
-Agents: ['Anne']
-Drives: []
-Beliefs: [['Anne', 'Believes', 'Basket', 'Contains', 'None'], ['Anne', 'Believes', 'Box', 'Contains', 'None']]
-Evaluating Mind Step 4
-ToM:
-Agents: ['Anne']
-Drives: [['Anne', 'Get', 'Ball', 'Basket']]
-Beliefs: [['Anne', 'Believes', 'Basket', 'Contains', 'None'], ['Anne', 'Believes', 'Box', 'Contains', 'None'], ['Anne', 'Believes', 'Ball', 'Hides', 'None']]
-Evaluating Mind Step 5
-ToM:
-Agents: ['Anne']
-Drives: [['Anne', 'Hide', 'Ball', 'Box']]
-Beliefs: [['Anne', 'Believes', 'Basket', 'Contains', 'None'], ['Anne', 'Believes', 'Box', 'Contains', 'None'], ['Anne', 'Believes', 'Ball', 'Hidden in', 'Box']]
-Evaluating Mind Step 6
-ToM:
-Agents: ['Sally']
-Drives: [['Sally', 'Search', 'Ball', 'None']]
-Beliefs: [['Sally', 'Believes', 'Box', 'Contains', 'None'], ['Sally', 'Believes', 'Basket', 'Contains', 'None']]
