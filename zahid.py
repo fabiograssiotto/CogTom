@@ -21,7 +21,7 @@ env = Environment()
 memory = BeliefMemory()
 
 # Create Query module
-query = Query(memory)
+query = Query(memory, env)
 
 # Create Model modules instances
 id = Id()
