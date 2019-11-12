@@ -43,7 +43,7 @@ while (True):
         break
 
     # Start ID module
-    id.set(env.get_agents(), env.get_drives())
+    id.set(env.get_agents())
 
     # Start EDD module
     edd.set(env.get_entities(), env.get_agents())
@@ -54,7 +54,7 @@ while (True):
     sam.process()
 
     # Start ToM Module.
-    tom.set(env.get_affordances(), id, edd, sam, memory)
+    tom.set(env.get_affordances(), env.get_intentions(), id, edd, sam, memory)
     tom.process()
     
     # Print out outputs from all modules and memory.

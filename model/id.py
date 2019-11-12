@@ -9,15 +9,11 @@ class Id(Model):
     def __init__(self):
         Model.__init__(self, Logger.MODEL_ID)
 
-    def set(self, agents, drives):
+    def set(self, agents):
         self.id_agents = agents
-        self.id_drives = drives
 
     def agents(self):
         return self.id_agents
-
-    def drives(self):
-        return self.id_drives
     
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
@@ -25,4 +21,3 @@ class Id(Model):
         # Output ID information
         self.logger.write("ID:")
         self.logger.write("Agents: " + str(self.id_agents))
-        self.logger.write("Drives: " + str(self.id_drives))

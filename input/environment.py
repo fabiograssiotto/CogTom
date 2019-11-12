@@ -45,7 +45,7 @@ class Environment:
             return 0
 
     def get_max_time_step(self):
-        return self.visual_df['t'].max()
+        return self.entities_df['t'].max()
 
     def get_agents(self):
         # Returns a list of the agents in the current time step.
@@ -55,7 +55,7 @@ class Environment:
     def get_entities(self):
         # Entities combine Agents and Objects
         entities_arr = np.array(self.entities_info['Entity'].tolist())
-        is_agent_arr = np.array(self.entities_info['Is_Moving'].tolist())
+        is_agent_arr = np.array(self.entities_info['Is_Agent'].tolist())
         return np.column_stack((entities_arr, is_agent_arr))
     
     def get_eye_dir(self):

@@ -14,11 +14,11 @@ class ToM:
     def __init__(self):
         Model.__init__(self, Logger.MODEL_TOM)
 
-    def set(self, affordances, id, edd, sam, mem):
+    def set(self, affordances,intentions, id, edd, sam, mem):
         self.afford = affordances
+        self.intentions = intentions
         self.id = id
         self.agents = id.agents
-        self.drives = id.drives()
         self.edd = edd
         self.sam = sam
         self.memory  = mem
@@ -46,35 +46,38 @@ class ToM:
                         # Object has an affordance.
                         tom_belief.append(sublist[1])
                         break
-                # Check if drives from the environment 
+                # Check if intentions from the environment 
                 # are likely to change beliefs.
-                tom_belief = self.check_drive(tom_belief)
+                tom_belief = self.check_intentions(tom_belief)
                 self.tom_beliefs.append(tom_belief.copy())
                 del tom_belief[2:] # Only keeps Agent and Belief 
 
             # Add the list of beliefs at the end to the Belief Memory.
             self.memory.add(self.tom_beliefs)
         
-    def check_drive(self, belief):
+    def check_intentions(self, belief):
         # Next step is to analyse DRIVES and verify Beliefs that involve the drives in
         # the current mind step.
-        for drv in self.drives:
-            drive = drv[1]
-            drive_obj = drv[2]
-            drive_tgt = drv[3]
+        for intent in self.intentions:
+            this_intent = intent[1]
+            this_intent_obj = intent[2]
+            this_intent_tgt = intent[3]
+
+            # How are beliefs modified by the intentions detected in the environment?
 
             # Check if this belief is modified by the at least one of the drives.
-            if belief[2] == drive_obj:
-                if (drive == 'Hide'):
-                    belief[3] = 'Hidden in'
-                    belief.append(drive_tgt)
-                    break
-                elif (drive == 'Get'):
+            #if belief[2] == drive_obj:
+            #    if (drive == 'Hide'):
+            #        belief[3] = 'Hidden in'
+            #        belief.append(drive_tgt)
+            #        break
+            #    elif (drive == 'Get'):
                     # TODO
-                    break
-                elif (drive == 'Search'):
-                    # TODO
-                    break
+            #        break
+            #    elif (drive == 'Search'):
+            #        # TODO
+            #        break
+
         if (len(belief) == 4):
             # Belief does not have a target object, set as None.
             belief.append('None')
@@ -86,5 +89,5 @@ class ToM:
         self.logger.write(msg)
         self.logger.write("ToM:")
         self.logger.write("Agents: " + str(self.agents()))
-        self.logger.write("Drives: " + str(self.drives))
+        self.logger.write("Intentions: " + str(self.intentions))
         self.logger.write("Beliefs: " + str(self.tom_beliefs))
