@@ -63,7 +63,7 @@ class IntentionHandler:
     
     def put(self, agt, obj, tgt, belief):
         belief[3] = 'HiddenIn'
-        belief[4] = tgt
+        belief.append(tgt)
         return belief
 
     def get(self, agt, obj, tgt, belief):

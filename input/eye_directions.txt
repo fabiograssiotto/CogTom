@@ -21,10 +21,14 @@ t   Agent   Object
 2   Anne    Ball
 2   Anne    Basket
 2   Anne    Box
+3   Sally   Anne
 3   Sally   Basket
 3   Sally   Box
+3   Sally   Ball
+3   Anne    Sally
 3   Anne    Basket
 3   Anne    Box
+3   Anne    Ball
 4   Anne    Basket
 4   Anne    Box
 5   Anne    Basket
