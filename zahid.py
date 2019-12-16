@@ -10,7 +10,7 @@ from model.edd import Edd
 from model.sam import Sam
 from model.tom import ToM
 from memory.beliefmem import BeliefMemory
-from input.environment import Environment
+from env.environment import Environment
 from output.logger import Logger
 from query.query import Query
 

@@ -16,6 +16,7 @@ class Query:
             print(str(i) + ": " + f)
             i = i + 1
         opt = input("Select Scene: ")
+        print()
         return (scenes[int(opt)-1])
 
     def run(self, t):
