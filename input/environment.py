@@ -7,28 +7,35 @@ import numpy as np
 class Environment:
 
     def __init__(self):
+        # Delayed initialization.
+        return
+    
+    def set_scene(self, scene):
+
+        folder = 'input/' + scene + '/'
+
         # Textual descriptions for each scene
-        self.scene_df = pd.read_csv('input/scenes.txt',
+        self.scene_df = pd.read_csv(folder + 'scenes.txt',
                                     sep = ':',
                                     comment = '#')
 
         # Identifying entities (agents and objects) in the scene.
-        self.entities_df = pd.read_csv('input/entities.txt',
+        self.entities_df = pd.read_csv(folder + 'entities.txt',
                                         delim_whitespace=True,
                                         comment='#')
 
         # Eye Direction System, identifies which entities are in the visual field of an agent.
-        self.eye_dir_df = pd.read_csv('input/eye_directions.txt',
+        self.eye_dir_df = pd.read_csv(folder + 'eye_directions.txt',
                                        delim_whitespace=True,
                                        comment='#')
 
         # Intention Detection System, identifies intentions for the agents in the visual field.
-        self.intention_df = pd.read_csv('input/intentions.txt',
+        self.intention_df = pd.read_csv(folder + 'intentions.txt',
                                          delim_whitespace=True,
                                          comment='#')
 
         # Affordances, or properties, for the objects in the scene.
-        self.afford_df = pd.read_csv('input/affordances.txt',
+        self.afford_df = pd.read_csv(folder + 'affordances.txt',
                                       delim_whitespace=True,
                                       comment='#')
         self.time_step = 1
