@@ -2,17 +2,22 @@
 # Manages the inputs from the environment, simulating 
 # visual and mind inputs.
 import pandas as pd
+import os
 import numpy as np
 
 class Environment:
 
     def __init__(self):
-        # Delayed initialization.
-        return
+        # List of scenes the system can analyse.
+        folder = "data"
+        self.folders = [f.name for f in os.scandir(folder) if f.is_dir()]
+
+    def get_scenes(self):
+        return self.folders
     
     def set_scene(self, scene):
 
-        folder = 'input/' + scene + '/'
+        folder = 'data/' + scene + '/'
 
         # Textual descriptions for each scene
         self.scene_df = pd.read_csv(folder + 'scenes.txt',

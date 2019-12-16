@@ -35,7 +35,7 @@ logger.write("Zahid - a computational implementation of the Theory of Mind model
 logger.write("", logtoterm = True)
 
 # Select scenario to be analysed.
-sc = query.select_scene()
+sc = query.select_scene(env.get_scenes())
 env.set_scene(sc)
 
 logger.write("Starting simulation. Mind Steps = " + str(env.get_max_time_step()), logtoterm = True)

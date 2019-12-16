@@ -1,7 +1,6 @@
 # Query Module
 # Allows information from memory to be output to the user of the system.
 import pandas as pd
-import os
 from memory import beliefmem
 
 class Query:
@@ -10,18 +9,14 @@ class Query:
         self.mem = mem
         self.env = env
 
-    def select_scene(self):
-        # List all scenes the system can analyse.
-        folder = "input"
-        subfolders = [f.name for f in os.scandir(folder) if f.is_dir() ]
-
+    def select_scene(self, scenes):
         print("Scenes:")
         i = 1
-        for f in subfolders:
-            print(str(i) + ": " + subfolders[int(i)-1])
+        for f in scenes:
+            print(str(i) + ": " + f)
             i = i + 1
         opt = input("Select Scene: ")
-        return (subfolders[int(opt)-1])
+        return (scenes[int(opt)-1])
 
     def run(self, t):
         # Start Query Module to check understanding of the false belief tasks.
