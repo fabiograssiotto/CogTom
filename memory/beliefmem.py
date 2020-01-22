@@ -26,12 +26,27 @@ class BeliefMemory:
         else:
             # Update and Add new ones as necessary.
 
-            # TODO: rethink how this should be done,
-            # a simple belief should not update a more complex one.
-            # Drop rows where the target object does not exist.
-            # Such rows represent beliefs that were not modified by an intention,
-            # ie beliefs only caused by an affordance.
-            # df = df[df['Target_Obj'] != 'None']
+            # Loop through each row of the update dataframe, to check if the
+            # memory content should be updated.
+            drop_list = []
+            for index, entry in df.iterrows():
+                if (entry['Target_Obj'] == 'None'):
+                    # No Target Obj, probably there was no intention associated 
+                    # to the Agent/Object pair.
+                    # Check if the memory already has a belief associated.
+                    agt = entry['Agent']
+                    obj = entry['Object']
+                    
+                    try:
+                        findRow = self.belief_df.loc[agt, obj]
+                    except KeyError:
+                        # Does not exist in Dataframe, keep going.
+                        continue
+
+                    if (findRow['Target_Obj'] != 'None'):
+                        # add to drop list, since we have a belief resulting from an intention.
+                        drop_list.append(index)
+            df = df.drop(drop_list)
 
             # Update the remaining rows.
             self.belief_df.update(df)
