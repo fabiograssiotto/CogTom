@@ -25,6 +25,13 @@ class BeliefMemory:
             self.belief_df = self.belief_df.append(df)
         else:
             # Update and Add new ones as necessary.
+
+            # Drop rows where the target object does not exist.
+            # Such rows represent beliefs that were not modified by an intention,
+            # ie beliefs only caused by an affordance.
+            df = df[df['Target_Obj'] != 'None']
+
+            # Update the remaining rows.
             self.belief_df.update(df)
             self.belief_df = self.belief_df.combine_first(df)
 
