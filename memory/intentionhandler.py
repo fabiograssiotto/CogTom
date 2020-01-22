@@ -49,6 +49,7 @@ class IntentionHandler:
             'Puts': self.put,
             'Gets': self.get,
             'Go': self.go,
+            'Give': self.give,
             'Exits': self.skip,
             'Enters': self.skip,
             'Search': self.skip
@@ -67,23 +68,24 @@ class IntentionHandler:
         # on the object ending up on the agent hand.
         belief[3] = 'OnHand'
         belief.append('Of ' + agt)
-        modified = True
         return belief
     
     def put(self, agt, obj, tgt, belief):
         belief[3] = 'HiddenIn'
         belief.append(tgt)
-        modified = True
         return belief
 
     def get(self, agt, obj, tgt, belief):
         belief[3] = 'OnHand'
         belief.append('Of ' + agt)
-        modified = True
         return belief
 
     def go(self, agt, obj, tgt, belief):
         belief[3] = 'Went to'
         belief.append(tgt)
-        modified = True
+        return belief
+
+    def give(self, agt, obj, tgt, belief):
+        belief[3] = 'Was Given to'
+        belief.append(tgt)
         return belief

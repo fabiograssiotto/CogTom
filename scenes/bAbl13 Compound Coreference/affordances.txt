@@ -1,0 +1,8 @@
+# This file presents 'affordances' for each of the entities in he scene.
+# Affordances are an entity's properties that show the possible actions users can take with it.
+# For example, a Box may contain other objects, and a Ball may be hidden.
+# Affordances, for the purpose of this system, are immutable properties during the simulation timeline.
+Object  Affordance
+Daniel  Move
+Sandra  Move
+John    Move

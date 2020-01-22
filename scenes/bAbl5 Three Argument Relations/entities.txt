@@ -1,0 +1,24 @@
+# This file simulates a camera input identifying a scene.
+# The camera system identifies:
+#   - a list of entities in the scene.
+#   - if the entity is an agent.
+# The column t specifies the time step for the camera information. 
+t   Entity  Is_Agent   
+1   Mary    True
+1   Fred    True
+1   Jeff    True
+1   Bill    True
+1   Cake    False
+1   Milk    False
+2   Mary    True
+2   Fred    True
+2   Jeff    True
+2   Bill    True
+2   Cake    False
+2   Milk    False
+3   Mary    True
+3   Fred    True
+3   Jeff    True
+3   Bill    True
+3   Cake    False
+3   Milk    False

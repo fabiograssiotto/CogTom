@@ -1,0 +1,7 @@
+# This file describes what is the current scene
+# the system is analysing in textual form.
+t:Scene
+1:Daniel and Sandra journeyed to the office.
+2:Then they went to he garden.
+3:Sandra and John travelled to the kitchen.
+4:After they moved to the hallway.
