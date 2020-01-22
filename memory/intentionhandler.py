@@ -22,6 +22,13 @@ class IntentionHandler:
             agt = intention[0]
             intent = intention[1]
             obj = intention[2]
+
+            # Some intentions affect directly the agent, such as movement.
+            # ie Mary Moves Self to bathroom.
+            if (obj == 'Self'):
+                # Set the object as the same as the agent.
+                obj = agt
+            
             tgt = intention[3]
 
             if (blf_obj == obj):
@@ -41,6 +48,7 @@ class IntentionHandler:
             'ReachFor': self.reachFor,
             'Puts': self.put,
             'Gets': self.get,
+            'Go': self.go,
             'Exits': self.skip,
             'Enters': self.skip,
             'Search': self.skip
@@ -59,14 +67,23 @@ class IntentionHandler:
         # on the object ending up on the agent hand.
         belief[3] = 'OnHand'
         belief.append('Of ' + agt)
+        modified = True
         return belief
     
     def put(self, agt, obj, tgt, belief):
         belief[3] = 'HiddenIn'
         belief.append(tgt)
+        modified = True
         return belief
 
     def get(self, agt, obj, tgt, belief):
         belief[3] = 'OnHand'
         belief.append('Of ' + agt)
+        modified = True
+        return belief
+
+    def go(self, agt, obj, tgt, belief):
+        belief[3] = 'Went to'
+        belief.append(tgt)
+        modified = True
         return belief
