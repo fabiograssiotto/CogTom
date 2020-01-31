@@ -5,9 +5,9 @@ import numpy as np
 from output.logger import Logger
 from memory.affordancehandler import AffordanceHandler
 from memory.intentionhandler import IntentionHandler
-from model.model import Model
+from .model import Model
 
-class ToM:
+class ToM(Model):
 
     # The set of mental states ToM represents.
     # Lets start with the BELIEF mental state.

@@ -1,5 +1,5 @@
 # Query Module
-# Allows information from memory to be output to the user of the system.
+# Handles user interaction.
 import pandas as pd
 from memory import beliefmem
 
@@ -10,13 +10,17 @@ class Query:
         self.env = env
 
     def select_scene(self, scenes):
-        print("Scenes:")
+        print("Scenes:\n")
         i = 1
         for f in scenes:
             print(str(i) + ": " + f)
             i = i + 1
-        opt = input("Select Scene: ")
         print()
+        opt = input("Select Scene (q to quit): ")
+        print()
+        if (opt == "q"):
+            print("Goodbye.")
+            exit()
         return (scenes[int(opt)-1])
 
     def run(self, t):

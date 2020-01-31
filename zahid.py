@@ -31,6 +31,7 @@ tom = ToM()
 
 # Logger
 logger = Logger(module = Logger.MODULES_MAIN)
+logger.write("", logtoterm = True)
 logger.write("Zahid - a computational implementation of the Theory of Mind model", logtoterm = True)
 logger.write("", logtoterm = True)
 

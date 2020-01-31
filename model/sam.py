@@ -4,8 +4,8 @@
 # SAM relies on EDD information to build its internal representations.
 import numpy as np
 
-from model.edd import Edd
-from model.model import Model
+from .edd import Edd
+from .model import Model
 from output.logger import Logger
 
 class Sam(Model):
