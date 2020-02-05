@@ -1,8 +1,4 @@
 TODO:
-Bracis
-SocialCom
-Flairs
-Ijcai
 
 Conferências sem datas definidas
 --------------------------------
@@ -11,6 +7,10 @@ ICAART - Sem datas para 2021, submissão provavelmente em outubro.
 AAMAS - Sem datas para 2021, submissão provavelmente em novembro.
 MICAI - Sem datas para 2020, submissão provavelmente em junho.
 COGSCI - Sem datas para 2021, submissão provavelmente em fevereiro.
+IJCAI - Sem datas para 2021, submissão provavelmente em janeiro.
+BRACIS - Sem datas para 2020, submissão provavelmente em maio.
+SOCIALCOM - Sem datas para 2020, submissão provavelmente em setembro.
+FLAIRS - Sem datas para 2021, submissão provavelmente em novembro.
 
 Conferências com datas definidas
 --------------------------------
