@@ -1,0 +1,61 @@
+
+
+AAAI - Sem datas para 2021, submissão provavelmente em setembro.
+JCRAI 2020 (Joint Conference on Robotics and Artificial Intelligence)
+     Abstract Submission: May 25, 2020
+     Full Submission: June 15, 2020
+IVA 2020 (ACM Intelligent Virtual Agents)
+     Submission: 5th April, 2020
+ICAART - Sem datas para 2021, submissão provavelmente em outubro.
+AAMAS - Sem datas para 2021, submissão provavelmente em novembro.
+MICAI - Sem datas para 2020. Submissão provavelmente em junho.
+COGSCI - Sem datas para 2021.
+Submissões provavelmente em fevereiro.
+
+Conferências que não encontrei na base da Qualis, mas que parecem ser interessantes:
+
+HCCAI 2020 (IEEE Humanized Computing and Communication with Artificial Intelligence)
+    Paper submission deadline; July 1, 2020
+CC 2020 (IEEE Conversational Computing, 1st)
+    Paper submission deadline: October 15, 2020
+
+
+
+On Fri, Jan 31, 2020 at 9:53 AM Paula Dornhofer P. Costa <paulad@unicamp.br> wrote:
+>
+> Segue algumas conferências.
+>
+> * Para submissão no primeiro semestre
+>
+> http://www.micai.org/ - Qualis B1
+>
+> Bracis - Brazilian Conference on Intelligent Systems
+>
+> * Para submissão no segundo semestre
+>
+> https://aaai.org/Conferences/AAAI-20/aaai20call/ - Qualis A1
+>
+> https://aamas2020.conference.auckland.ac.nz/ - Qualis A1
+>
+> https://www.flairs-33.info/important-dates - Qualis B1
+>
+> http://www.icaart.org/ImportantInformation.aspx - Qualis B1
+>
+> https://ijcai20.org/
+>
+> Abraço,
+>
+> Paula
+>
+> --
+> Prof. Paula Dornhofer Paro Costa, PhD
+> Dept. of Computer Engineering and Industrial Automation (DCA)
+> School of Electrical and Computer Engineering
+> University of Campinas (UNICAMP)
+> Av. Albert Einstein, 400
+> Office 311-A, Building A
+> Campinas, SP - Brazil
+> 13083-852
+> Phone/WhatsApp: +55 (19) 988-013-938
+> http://www.dca.fee.unicamp.br/~paula
+>
