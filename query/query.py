@@ -39,7 +39,7 @@ class Query:
         return ret
 
     def greet(self):
-        print("Hello, I am Zahid.")
+        print("Hello, I am CogTom.")
         print()
         print("This is the list of commands I understand.")
         self.print_help()

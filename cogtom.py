@@ -1,4 +1,4 @@
-# Zahid - an implementation of the Theory of Mind model according to Simon Baron Cohen.
+# CogTom - an implementation of the Theory of Mind model according to Simon Baron Cohen.
 # The intent of this software program is to evaluate false belief tasks.
 import time
 import sys
@@ -32,7 +32,7 @@ tom = ToM()
 # Logger
 logger = Logger(module = Logger.MODULES_MAIN)
 logger.write("", logtoterm = True)
-logger.write("Zahid - a computational implementation of the Theory of Mind model", logtoterm = True)
+logger.write("CogTom - a computational implementation of the Theory of Mind model", logtoterm = True)
 logger.write("", logtoterm = True)
 
 # Select scenario to be analysed.
