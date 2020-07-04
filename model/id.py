@@ -4,6 +4,7 @@
 #  - identifies drives for each agent.
 from output.logger import Logger
 from model.model import Model
+import pandas as pd
 
 class Id(Model):
     def __init__(self):
@@ -21,3 +22,7 @@ class Id(Model):
         # Output ID information
         self.logger.write("ID:")
         self.logger.write("Agents: " + str(self.id_agents))
+
+        # Latex
+        df = pd.DataFrame(self.id_agents, columns=['Agents'])
+        self.logger.write_tex(df.to_latex(index=False))

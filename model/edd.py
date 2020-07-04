@@ -6,6 +6,7 @@
 import numpy as np
 from output.logger import Logger
 from model.model import Model
+import pandas as pd
 
 class Edd(Model):
 
@@ -88,6 +89,12 @@ class Edd(Model):
         self.logger.write("Eye_Direction: " + str(self.edd_eye_dir))
         self.logger.write("Agent_Store: " + str(self.edd_agent_store))
         self.logger.write("Gaze_Register:" + str(self.edd_gaze_register))
+
+         # Latex
+        df_ent = pd.DataFrame(self.edd_entities[:,0], columns=['Entities'])
+        self.logger.write_tex(df_ent.to_latex(index=False))
+        df_eye = pd.DataFrame(self.edd_eye_dir)
+        self.logger.write_tex(df_eye.to_latex(index=False))
 
 
 

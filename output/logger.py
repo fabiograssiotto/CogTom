@@ -16,7 +16,9 @@ class Logger(object):
             self.mainlog = open("output\main.log", "w+")
         elif (module == Logger.MODULES_MODEL):
             file_name = "output\model" + model + ".log"
+            file_name_tex = "output\model" + model + ".tex"
             self.modellog = open(file_name, "w+")
+            self.modeltex = open(file_name_tex, "w+")
         elif (module == Logger.MODULES_MEMORY):
             self.memlog = open("output\memory.log", "w+")
 
@@ -35,6 +37,9 @@ class Logger(object):
         elif (self.module == Logger.MODULES_MEMORY):
             self.memlog.write(message + '\n')
 
+    def write_tex(self, message):
+        self.modeltex.write(message + '\n')
+        
     def flush(self):
         pass    
 
@@ -43,5 +48,6 @@ class Logger(object):
             self.mainlog.close()
         elif (self.module == Logger.MODULES_MODEL):
             self.modellog.close()
+            self.modeltex.close()
         elif (self.module == Logger.MODULES_MEMORY):
             self.memlog.close()

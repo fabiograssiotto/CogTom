@@ -1,0 +1,12 @@
+
+CogTom - a computational implementation of the Theory of Mind model
+
+Scenes:
+
+1: bAbl_01 Single Supporting Fact
+2: bAbl_05 Three Argument Relations
+3: bAbl_13 Compound Coreference
+4: bAbl_Mod True Belief
+5: ToM Sally Anne
+
+Select Scene (q to quit): 
