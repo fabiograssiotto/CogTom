@@ -7,8 +7,8 @@ from model.model import Model
 import pandas as pd
 
 class Id(Model):
-    def __init__(self):
-        Model.__init__(self, Logger.MODEL_ID)
+    def __init__(self, max_steps):
+        Model.__init__(self, Logger.MODEL_ID, max_steps)
 
     def set(self, agents):
         self.id_agents = agents
@@ -18,11 +18,11 @@ class Id(Model):
     
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
-        self.logger.write(msg)
+        self.logger.write(msg, t)
         # Output ID information
-        self.logger.write("ID:")
-        self.logger.write("Agents: " + str(self.id_agents))
+        self.logger.write("ID:", t)
+        self.logger.write("Agents: " + str(self.id_agents), t)
 
         # Latex
         df = pd.DataFrame(self.id_agents, columns=['Agents'])
-        self.logger.write_tex(df.to_latex(index=False))
+        self.logger.write_tex(df.to_latex(index=False), t)

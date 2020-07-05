@@ -11,7 +11,9 @@ class BeliefMemory:
         self.belief_df = pd.DataFrame(columns = ['Agent', 'Belief', 'Object',
                                                  'Affordance', 'Target_Obj'])
         self.belief_df.set_index(['Agent','Object'], drop = False, inplace = True)
-        self.logger = Logger(Logger.MODULES_MEMORY)                                
+
+    def set(self, max_steps):
+        self.logger = Logger(Logger.MODULES_MEMORY, max_steps)                                
     
     def add(self, beliefs):
         # Adds the set of beliefs to the memory.
@@ -73,6 +75,6 @@ class BeliefMemory:
 
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
-        self.logger.write(msg)
-        self.logger.write("Belief Memory: ")
-        self.logger.write(self.belief_df.reset_index(drop = True).to_string())
+        self.logger.write(msg, t)
+        self.logger.write("Belief Memory: ", t)
+        self.logger.write(self.belief_df.reset_index(drop = True).to_string(), t)

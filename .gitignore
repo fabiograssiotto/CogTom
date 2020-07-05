@@ -111,4 +111,5 @@ venv.bak/
 pandas/
 
 # Logging
-output/*.log
+output/log/*.log
+output/tex/*.tex

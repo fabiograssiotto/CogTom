@@ -13,8 +13,8 @@ class ToM(Model):
     # Lets start with the BELIEF mental state.
     MENTAL_STATES = ["Believes"]
 
-    def __init__(self):
-        Model.__init__(self, Logger.MODEL_TOM)
+    def __init__(self, max_steps):
+        Model.__init__(self, Logger.MODEL_EDD, max_steps)
 
     def set(self, affordances,intentions, id, edd, sam, mem):
         self.affordhdlr = AffordanceHandler(affordances)
@@ -58,8 +58,8 @@ class ToM(Model):
 
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
-        self.logger.write(msg)
-        self.logger.write("ToM:")
-        self.logger.write("Agents: " + str(self.agents()))
-        self.logger.write("Intentions: " + str(self.inthdlr.getintentions()))
-        self.logger.write("Beliefs: " + str(self.tom_beliefs))
+        self.logger.write(msg, t)
+        self.logger.write("ToM:", t)
+        self.logger.write("Agents: " + str(self.agents()), t)
+        self.logger.write("Intentions: " + str(self.inthdlr.getintentions()), t)
+        self.logger.write("Beliefs: " + str(self.tom_beliefs), t)

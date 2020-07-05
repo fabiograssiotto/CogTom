@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 class Logger(object):
     
@@ -10,21 +11,33 @@ class Logger(object):
     MODEL_SAM = 'SAM'
     MODEL_TOM = 'TOM'
 
-    def __init__(self, module, model = None):
+    def __init__(self, module, steps, model = None):
         self.terminal = sys.stdout
+        log_folder = Path("output/log/")
+        tex_folder = Path("output/tex/")
+        self.modellog = []
+        self.modeltex = []
+        self.memlog = []
+
         if (module == Logger.MODULES_MAIN):
             self.mainlog = open("output\main.log", "w+")
         elif (module == Logger.MODULES_MODEL):
-            file_name = "output\model" + model + ".log"
-            file_name_tex = "output\model" + model + ".tex"
-            self.modellog = open(file_name, "w+")
-            self.modeltex = open(file_name_tex, "w+")
+            for i in range(steps):
+                log_file = model + "-" + str(i+1) + ".log"
+                tex_file = model + "-" + str(i+1) + ".tex"    
+                file_name = log_folder / log_file
+                file_name_tex = tex_folder / tex_file
+                #file_name = "output\\log\\" + model + "-" + str(i+1) + ".log"
+                #file_name_tex = "output\\tex\\" + model + "-" + str(i+1) + ".tex"
+                self.modellog.append(open(file_name, "w+"))
+                self.modeltex.append(open(file_name_tex, "w+"))
         elif (module == Logger.MODULES_MEMORY):
-            self.memlog = open("output\memory.log", "w+")
+            for i in range(steps):
+                self.memlog.append(open("output\memory.log", "w+"))
 
         self.module = module
 
-    def write(self, message, logtoterm = False):
+    def write(self, message, step, logtoterm = False):
         # Terminal Logs
         if (logtoterm == True):
             self.terminal.write(message + '\n')
@@ -33,21 +46,21 @@ class Logger(object):
             # Main logging
             self.mainlog.write(message + '\n')
         elif (self.module == Logger.MODULES_MODEL):
-            self.modellog.write(message + '\n')  
+            self.modellog[step-1].write(message + '\n')  
         elif (self.module == Logger.MODULES_MEMORY):
-            self.memlog.write(message + '\n')
+            self.memlog[step-1].write(message + '\n')
 
-    def write_tex(self, message):
-        self.modeltex.write(message + '\n')
+    def write_tex(self, message, step):
+        self.modeltex[step-1].write(message + '\n')
         
     def flush(self):
         pass    
 
-    def close(self):
+    def close(self, step):
         if (self.module == Logger.MODULES_MAIN):
             self.mainlog.close()
         elif (self.module == Logger.MODULES_MODEL):
-            self.modellog.close()
-            self.modeltex.close()
+            self.modellog[step-1].close()
+            self.modeltex[step-1].close()
         elif (self.module == Logger.MODULES_MEMORY):
-            self.memlog.close()
+            self.memlog[step-1].close()

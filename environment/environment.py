@@ -48,6 +48,7 @@ class Environment:
     def set_time_step(self, t):
         # Sets the current time step.
         # Returns -1 if the environment indicates the end of the simulation.
+        self.time_step = t
         self.scene_info = self.scene_df.loc[self.scene_df['t'] == t]
         self.entities_info = self.entities_df.loc[self.entities_df['t'] == t]
         self.eye_dir_info = self.eye_dir_df.loc[self.eye_dir_df['t'] == t]
@@ -90,3 +91,6 @@ class Environment:
     def get_intentions(self):
         intentions = self.intention_info.loc[self.intention_info['Intention'] != 'None']
         return intentions[['Agent', 'Intention', 'Object', 'Target']].values.tolist()
+
+    def get_time_step(self):
+        return self.time_step

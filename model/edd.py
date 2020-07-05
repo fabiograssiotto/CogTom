@@ -10,8 +10,8 @@ import pandas as pd
 
 class Edd(Model):
 
-    def __init__(self):
-        Model.__init__(self, Logger.MODEL_EDD)
+    def __init__(self, max_steps):
+        Model.__init__(self, Logger.MODEL_EDD, max_steps)
 
     def set(self, entities_arr, agents):
         self.edd_entities = entities_arr
@@ -83,18 +83,18 @@ class Edd(Model):
     
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
-        self.logger.write(msg)
-        self.logger.write("EDD:")
-        self.logger.write("Entities: " + str(self.edd_entities[:,0]))
-        self.logger.write("Eye_Direction: " + str(self.edd_eye_dir))
-        self.logger.write("Agent_Store: " + str(self.edd_agent_store))
-        self.logger.write("Gaze_Register:" + str(self.edd_gaze_register))
+        self.logger.write(msg, t)
+        self.logger.write("EDD:", t)
+        self.logger.write("Entities: " + str(self.edd_entities[:,0]), t)
+        self.logger.write("Eye_Direction: " + str(self.edd_eye_dir), t)
+        self.logger.write("Agent_Store: " + str(self.edd_agent_store), t)
+        self.logger.write("Gaze_Register:" + str(self.edd_gaze_register), t)
 
          # Latex
         df_ent = pd.DataFrame(self.edd_entities[:,0], columns=['Entities'])
-        self.logger.write_tex(df_ent.to_latex(index=False))
+        self.logger.write_tex(df_ent.to_latex(index=False), t)
         df_eye = pd.DataFrame(self.edd_eye_dir)
-        self.logger.write_tex(df_eye.to_latex(index=False))
+        self.logger.write_tex(df_eye.to_latex(index=False), t)
 
 
 

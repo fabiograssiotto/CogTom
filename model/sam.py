@@ -10,8 +10,8 @@ from output.logger import Logger
 
 class Sam(Model):
 
-    def __init__(self):
-        Model.__init__(self, Logger.MODEL_SAM)
+    def __init__(self, max_steps):
+        Model.__init__(self, Logger.MODEL_SAM, max_steps)
         
     def set(self, edd):
         self.edd = edd
@@ -43,8 +43,8 @@ class Sam(Model):
 
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)
-        self.logger.write(msg)
-        self.logger.write("SAM:")
-        self.logger.write("Entities on scene: " + str(self.entities))
-        self.logger.write("Agents on scene: " + str(self.agents))
-        self.logger.write("Agents with shared attention: " + str(self.shared_attn_list))
+        self.logger.write(msg, t)
+        self.logger.write("SAM:", t)
+        self.logger.write("Entities on scene: " + str(self.entities), t)
+        self.logger.write("Agents on scene: " + str(self.agents), t)
+        self.logger.write("Agents with shared attention: " + str(self.shared_attn_list), t)
