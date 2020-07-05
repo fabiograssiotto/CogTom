@@ -51,7 +51,7 @@ memory.set(max_steps)
 while (True):
     # Set current simulation step.
     if (env.set_time_step(t) == -1):
-        logger.write("Simulation ended", logtoterm = True)
+        logger.write("Simulation ended", 1, logtoterm = True)
         break
 
     # Start ID module
@@ -80,10 +80,10 @@ while (True):
     logger.write("Starting query module, mindstep = " + str(t), t)
     if (query.run(t) == -2):
         # Quits
-        logger.write("Simulation ended", logtoterm = True)
+        logger.write("Simulation ended", t, logtoterm = True)
         break
+
     # Update time step
     t = t + 1
-    # logging per simulation step
-    logger.flush()
-    logger.close(t)
+
+logger.flush()

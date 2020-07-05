@@ -18,6 +18,7 @@ class Logger(object):
         self.modellog = []
         self.modeltex = []
         self.memlog = []
+        self.max_step = steps
 
         if (module == Logger.MODULES_MAIN):
             self.mainlog = open("output\main.log", "w+")
@@ -56,11 +57,12 @@ class Logger(object):
     def flush(self):
         pass    
 
-    def close(self, step):
-        if (self.module == Logger.MODULES_MAIN):
-            self.mainlog.close()
-        elif (self.module == Logger.MODULES_MODEL):
-            self.modellog[step-1].close()
-            self.modeltex[step-1].close()
-        elif (self.module == Logger.MODULES_MEMORY):
-            self.memlog[step-1].close()
+
+#    def close(self):
+#        if (self.module == Logger.MODULES_MAIN):
+#            self.mainlog.close()
+#        elif (self.module == Logger.MODULES_MODEL):
+#            self.modellog[step-1].close()
+#            self.modeltex[step-1].close()
+#        elif (self.module == Logger.MODULES_MEMORY):
+#            self.memlog[step-1].close()
