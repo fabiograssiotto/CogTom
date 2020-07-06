@@ -3,6 +3,7 @@
 # to compute if two agents are seeing the same thing.
 # SAM relies on EDD information to build its internal representations.
 import numpy as np
+import pandas as pd
 
 from .edd import Edd
 from .model import Model
@@ -48,3 +49,8 @@ class Sam(Model):
         self.logger.write("Entities on scene: " + str(self.entities), t)
         self.logger.write("Agents on scene: " + str(self.agents), t)
         self.logger.write("Agents with shared attention: " + str(self.shared_attn_list), t)
+
+        # Latex
+        df_shared_attn = pd.DataFrame(self.shared_attn_list, columns = ['Object', 'Agent 1', 'Agent 2'])
+        if not df_shared_attn.empty:
+            self.logger.write_tex(df_shared_attn.to_latex(index=False, caption='SAM Shared Attention Table'), t)

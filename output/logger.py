@@ -1,4 +1,5 @@
 import sys
+import os
 from pathlib import Path
 
 class Logger(object):
@@ -13,8 +14,15 @@ class Logger(object):
 
     def __init__(self, module, steps, model = None):
         self.terminal = sys.stdout
+        
+        # Logging and Latex folders
         log_folder = Path("output/log/")
         tex_folder = Path("output/tex/")
+        if not os.path.exists(log_folder):
+            os.makedirs(log_folder)
+        if not os.path.exists(tex_folder):
+            os.makedirs(tex_folder)
+
         self.modellog = []
         self.modeltex = []
         self.memlog = []
@@ -55,14 +63,4 @@ class Logger(object):
         self.modeltex[step-1].write(message + '\n')
         
     def flush(self):
-        pass    
-
-
-#    def close(self):
-#        if (self.module == Logger.MODULES_MAIN):
-#            self.mainlog.close()
-#        elif (self.module == Logger.MODULES_MODEL):
-#            self.modellog[step-1].close()
-#            self.modeltex[step-1].close()
-#        elif (self.module == Logger.MODULES_MEMORY):
-#            self.memlog[step-1].close()
+        pass

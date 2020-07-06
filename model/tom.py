@@ -2,6 +2,8 @@
 # ToM represents mental states
 # described as triads of form Agent-Mental State-Object
 import numpy as np
+import pandas as pd
+
 from output.logger import Logger
 from memory.affordancehandler import AffordanceHandler
 from memory.intentionhandler import IntentionHandler
@@ -14,7 +16,7 @@ class ToM(Model):
     MENTAL_STATES = ["Believes"]
 
     def __init__(self, max_steps):
-        Model.__init__(self, Logger.MODEL_EDD, max_steps)
+        Model.__init__(self, Logger.MODEL_TOM, max_steps)
 
     def set(self, affordances,intentions, id, edd, sam, mem):
         self.affordhdlr = AffordanceHandler(affordances)
@@ -63,3 +65,11 @@ class ToM(Model):
         self.logger.write("Agents: " + str(self.agents()), t)
         self.logger.write("Intentions: " + str(self.inthdlr.getintentions()), t)
         self.logger.write("Beliefs: " + str(self.tom_beliefs), t)
+
+        # Latex
+        df_intentions = pd.DataFrame(self.inthdlr.getintentions(), columns = ['Agent', 'Intention', 'Object','Target'])
+        if not df_intentions.empty:
+            self.logger.write_tex(df_intentions.to_latex(index=False, caption='TOM Intentions Table'), t)
+        df_beliefs = pd.DataFrame(self.tom_beliefs, columns = ['Agent', 'Belief', 'Object', 'Affordance', 'Target'])
+        if not df_beliefs.empty:
+            self.logger.write_tex(df_beliefs.to_latex(index=False, caption='TOM Beliefs Table'), t)

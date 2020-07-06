@@ -24,5 +24,6 @@ class Id(Model):
         self.logger.write("Agents: " + str(self.id_agents), t)
 
         # Latex
-        df = pd.DataFrame(self.id_agents, columns=['Agents'])
-        self.logger.write_tex(df.to_latex(index=False), t)
+        df_agt = pd.DataFrame(self.id_agents, columns=['Agents'])
+        if not df_agt.empty:
+            self.logger.write_tex(df_agt.to_latex(index=False, caption='ID Agents Table'), t)

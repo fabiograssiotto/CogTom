@@ -92,9 +92,21 @@ class Edd(Model):
 
          # Latex
         df_ent = pd.DataFrame(self.edd_entities[:,0], columns=['Entities'])
-        self.logger.write_tex(df_ent.to_latex(index=False), t)
-        df_eye = pd.DataFrame(self.edd_eye_dir)
-        self.logger.write_tex(df_eye.to_latex(index=False), t)
+        if not df_ent.empty:
+            self.logger.write_tex(df_ent.to_latex(index=False, caption='EDD Entities Table'), t)
+        df_eye = pd.DataFrame(self.edd_eye_dir, columns = self.edd_entities[:,0])
+        if not df_eye.empty:
+            df_eye = df_eye.set_index(pd.Index(self.edd_eyes))
+            self.logger.write_tex(df_eye.to_latex(index=True, caption='EDD Eye Direction Table'), t)
+        df_agt = pd.DataFrame(self.edd_agent_store)
+        if not df_agt.empty:
+            df_agt = df_agt.set_index(pd.Index(self.edd_eyes))
+            self.logger.write_tex(df_agt.to_latex(index=True, caption='EDD Agent Store'), t)
+        df_gaze = pd.DataFrame(self.edd_gaze_register)
+        if not df_gaze.empty:
+            self.logger.write_tex(df_gaze.to_latex(index=False, caption='EDD Gaze Register'), t)
+
+
 
 
 
