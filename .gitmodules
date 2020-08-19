@@ -1,0 +1,3 @@
+[submodule "fb_bAbI"]
+	path = fb_bAbI
+	url = https://github.com/fabiograssiotto/bAbI-tasks
