@@ -48,6 +48,7 @@ class IntentionHandler:
             'ReachFor': self.reachFor,
             'Puts': self.put,
             'Gets': self.get,
+            'Pickup': self.pickup,
             'Go': self.go,
             'Give': self.give,
             'Exits': self.skip,
@@ -76,6 +77,11 @@ class IntentionHandler:
         return belief
 
     def get(self, agt, obj, tgt, belief):
+        belief[3] = 'OnHand'
+        belief.append('Of ' + agt)
+        return belief
+
+    def pickup(self, agt, obj, tgt, belief):
         belief[3] = 'OnHand'
         belief.append('Of ' + agt)
         return belief

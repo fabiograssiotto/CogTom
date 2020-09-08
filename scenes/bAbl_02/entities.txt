@@ -3,16 +3,10 @@
 #   - a list of entities in the scene.
 #   - if the entity is an agent.
 # The column t specifies the time step for the camera information. 
-t   Entity  Is_Agent   
-1   Daniel  True
-1   Sandra  True
-1   John    True
-2   Daniel  True
-2   Sandra  True
-2   John    True
-3   Daniel  True
-3   Sandra  True
-3   John    True
-4   Daniel  True
-4   Sandra  True
-4   John    True
+t   Entity   Is_Agent
+1   John     True
+1   Bob      True
+1   Football False
+2   John     True
+2   Football False
+

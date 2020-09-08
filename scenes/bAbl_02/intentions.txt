@@ -2,8 +2,6 @@
 # The camera system identifies the intention of an agent
 # based on movement and posture information in the scene.
 # The column t specifies the time step for the camera information. 
-t   Agent   Intention   Object  Target
-1   Anne    Go          Self    Kitchen
-1   Sally   Go          Self    Kitchen
-2   Anne    Gets        Milk    Fridge
-3   Anne    Go          Self    Pantry 
+t   Agent   Intention   Object    Target
+1   John    Pickup      Football  None
+2   Bob     Go          Self      Kitchen

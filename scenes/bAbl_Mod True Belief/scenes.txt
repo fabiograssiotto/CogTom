@@ -1,6 +1,0 @@
-# This file describes what is the current scene
-# the system is analysing in textual form.
-t:Scene
-1:Anne entered the kitchen, Sally entered the kitchen, The milk is in the fridge.
-2:Anne got the milk from the fridge.
-3:Anne moved the milk to the pantry.

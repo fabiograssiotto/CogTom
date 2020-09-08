@@ -5,15 +5,9 @@
 # Agent is agent name
 # Object is the entity the agent is looking at.
 t   Agent   Object
-1   Anne    Sally
-1   Anne    Fridge
-1   Sally   Anne
-1   Sally   Fridge
-2   Anne    Sally
-2   Anne    Fridge
-2   Anne    Milk
-2   Sally   Anne
-2   Sally   Fridge
-2   Sally   Milk
-3   Anne    Milk
-3   Sally   Fridge
+1   John    Bob
+1   John    Football
+1   Bob     John
+1   Bob     Football
+2   John    Football
+
