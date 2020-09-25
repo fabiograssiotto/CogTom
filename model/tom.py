@@ -30,56 +30,54 @@ class ToM(Model):
         self.edd = edd
         self.sam = sam
         self.memory  = mem
-        self.tom_beliefs = []
-        self.observer_beliefs = []
+        self.agt_beliefs = []
+        self.obs_beliefs = []
 
     def process(self):
-        # Create representations of the mental states 
-        # of the form Agent-Mental State-Object
-
+        # Mental states for the Agents entities
         # 'Believes' mental state for entities in the scene
         # The mental state modeled here produces descriptions in the form
         # AGENT BELIEVES OBJECT AFFORDANCE or
         # AGENT BELIEVES OBJECT AFFORDANCE TARGET_OBJECT (due to an intention)
         for agent in range(self.edd.edd_eyes.shape[0]):
-            tom_belief = []
+            agt_belief = []
             # For each agent line in edd_eyes
             # Retrieve the list of objects the agent sees.
-            tom_belief.append(self.edd.edd_eyes[agent])
-            tom_belief.append(self.MENTAL_STATES[0])
+            agt_belief.append(self.edd.edd_eyes[agent])
+            agt_belief.append(self.MENTAL_STATES[0])
             for ent in range(self.edd.edd_agent_store.shape[1]):
                 obj = self.edd.edd_agent_store[agent][ent]
-                tom_belief.append(obj)
+                agt_belief.append(obj)
                 
                 # Check any affordances the entities may have.
-                tom_belief = self.affordhdlr.check_affordances(tom_belief)
+                agt_belief = self.affordhdlr.check_affordances(agt_belief)
 
                 # Check if intentions from the environment 
                 # are likely to change beliefs.
-                tom_belief = self.inthdlr.check_intentions(tom_belief)
-                self.tom_beliefs.append(tom_belief.copy())
-                del tom_belief[2:] # Only keeps Agent and Belief 
+                agt_belief = self.inthdlr.check_intentions(agt_belief)
+                self.agt_beliefs.append(agt_belief.copy())
+                del agt_belief[2:] # Only keeps Agent and Belief 
 
             # Add the list of beliefs at the end to the Belief Memory.
-            self.memory.add(self.tom_beliefs)
+            self.memory.add(self.agt_beliefs)
 
-        # Mental states for entity positioning
+        # Mental states for the observer entity - positioning
         # These are mental states to indicate where the agents and objects are positioned in the environment.
         # The mental states are not the states for each of the agents in the scene, but rather for the Observer entity.
         # The mental states here will be of the form
         # OBSERVER KNOWS AGENT IS AT PLACE or
         # OBSERVER KNOWS OBJECT IS AT PLACE
         for pos_data in self.positioning:
-            observer_belief = []
-            observer_belief.append(self.OBS_ENTITY)
-            observer_belief.append(self.MENTAL_STATES[1])
-            observer_belief.append(pos_data[0])
-            observer_belief.append("IS AT")
-            observer_belief.append(pos_data[1])
+            obs_belief = []
+            obs_belief.append(self.OBS_ENTITY)
+            obs_belief.append(self.MENTAL_STATES[1])
+            obs_belief.append(pos_data[0])
+            obs_belief.append("IS AT")
+            obs_belief.append(pos_data[1])
 
-            self.observer_beliefs.append(observer_belief.copy())
+            self.obs_beliefs.append(obs_belief.copy())
         
-        self.memory.add(self.observer_beliefs)
+        self.memory.add(self.obs_beliefs)
 
 
     def print(self, t):
@@ -88,12 +86,16 @@ class ToM(Model):
         self.logger.write("ToM:", t)
         self.logger.write("Agents: " + str(self.agents()), t)
         self.logger.write("Intentions: " + str(self.inthdlr.getintentions()), t)
-        self.logger.write("Beliefs: " + str(self.tom_beliefs), t)
+        self.logger.write("Agent Beliefs: " + str(self.agt_beliefs), t)
+        self.logger.write("Observer Beliefs: " + str(self.obs_beliefs), t)
 
         # Latex
         df_intentions = pd.DataFrame(self.inthdlr.getintentions(), columns = ['Agent', 'Intention', 'Object','Target'])
         if not df_intentions.empty:
             self.logger.write_tex(df_intentions.to_latex(index=False, caption='TOM Intentions Table'), t)
-        df_beliefs = pd.DataFrame(self.tom_beliefs, columns = ['Agent', 'Belief', 'Object', 'Affordance', 'Target'])
+        df_agt_beliefs = pd.DataFrame(self.agt_beliefs, columns = ['Agent', 'Belief', 'Object', 'Affordance', 'Target'])
+        df_obs_beliefs = pd.DataFrame(self.obs_beliefs, columns = ['Agent', 'Belief', 'Object', 'Affordance', 'Target'])
+        df_beliefs = pd.concat([df_agt_beliefs, df_obs_beliefs])
+        
         if not df_beliefs.empty:
             self.logger.write_tex(df_beliefs.to_latex(index=False, caption='TOM Beliefs Table'), t)
