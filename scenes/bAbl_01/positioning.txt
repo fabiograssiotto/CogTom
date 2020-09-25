@@ -1,0 +1,7 @@
+# This file presents positioning location for each of the entities in he scene.
+# Positioning data is important to locate agents and objects in the environment.
+t Entity  Location
+1 Mary    Bathroom
+1 John    Hallway
+2 Mary    Office
+2 John    Hallway

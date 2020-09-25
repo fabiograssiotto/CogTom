@@ -13,26 +13,31 @@ class ToM(Model):
 
     # The set of mental states ToM represents.
     # Lets start with the BELIEF mental state.
-    MENTAL_STATES = ["Believes"]
+    MENTAL_STATES = ["Believes", 'Knows']
+
+    # The Observer Entity for Observer Beliefs.
+    OBS_ENTITY = "Observer"
 
     def __init__(self, max_steps):
         Model.__init__(self, Logger.MODEL_TOM, max_steps)
 
-    def set(self, affordances,intentions, id, edd, sam, mem):
+    def set(self, affordances,intentions, positioning, id, edd, sam, mem):
         self.affordhdlr = AffordanceHandler(affordances)
         self.inthdlr = IntentionHandler(intentions)
+        self.positioning = positioning
         self.id = id
         self.agents = id.agents
         self.edd = edd
         self.sam = sam
         self.memory  = mem
         self.tom_beliefs = []
+        self.observer_beliefs = []
 
     def process(self):
         # Create representations of the mental states 
         # of the form Agent-Mental State-Object
 
-        # 'Believes' mental state
+        # 'Believes' mental state for entities in the scene
         # The mental state modeled here produces descriptions in the form
         # AGENT BELIEVES OBJECT AFFORDANCE or
         # AGENT BELIEVES OBJECT AFFORDANCE TARGET_OBJECT (due to an intention)
@@ -57,6 +62,25 @@ class ToM(Model):
 
             # Add the list of beliefs at the end to the Belief Memory.
             self.memory.add(self.tom_beliefs)
+
+        # Mental states for entity positioning
+        # These are mental states to indicate where the agents and objects are positioned in the environment.
+        # The mental states are not the states for each of the agents in the scene, but rather for the Observer entity.
+        # The mental states here will be of the form
+        # OBSERVER KNOWS AGENT IS AT PLACE or
+        # OBSERVER KNOWS OBJECT IS AT PLACE
+        for pos_data in self.positioning:
+            observer_belief = []
+            observer_belief.append(self.OBS_ENTITY)
+            observer_belief.append(self.MENTAL_STATES[1])
+            observer_belief.append(pos_data[0])
+            observer_belief.append("IS AT")
+            observer_belief.append(pos_data[1])
+
+            self.observer_beliefs.append(observer_belief.copy())
+        
+        self.memory.add(self.observer_beliefs)
+
 
     def print(self, t):
         msg = "Evaluating Mind Step " + str(t)

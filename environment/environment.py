@@ -29,6 +29,11 @@ class Environment:
                                         delim_whitespace=True,
                                         comment='#')
 
+        # Positioning for entities in the scene
+        self.pos_df  = pd.read_csv(folder + 'positioning.txt',
+                                   delim_whitespace=True,
+                                   comment='#')
+
         # Eye Direction System, identifies which entities are in the visual field of an agent.
         self.eye_dir_df = pd.read_csv(folder + 'eye_directions.txt',
                                        delim_whitespace=True,
@@ -53,6 +58,7 @@ class Environment:
         self.entities_info = self.entities_df.loc[self.entities_df['t'] == t]
         self.eye_dir_info = self.eye_dir_df.loc[self.eye_dir_df['t'] == t]
         self.intention_info = self.intention_df.loc[self.intention_df['t'] == t]
+        self.positioning_info = self.pos_df.loc[self.pos_df['t'] == t]
         if (self.entities_info.empty == True):
             # Empty dataframe, so there are no more simulation steps.
             return -1
@@ -61,6 +67,7 @@ class Environment:
             self.entities_info = self.entities_info.drop(columns='t')
             self.eye_dir_info = self.eye_dir_info.drop(columns='t')
             self.intention_info = self.intention_info.drop(columns='t')
+            self.positioning_info = self.positioning_info.drop(columns='t')
             return 0
 
     def get_max_time_step(self):
@@ -91,6 +98,9 @@ class Environment:
     def get_intentions(self):
         intentions = self.intention_info.loc[self.intention_info['Intention'] != 'None']
         return intentions[['Agent', 'Intention', 'Object', 'Target']].values.tolist()
+
+    def get_positioning(self):
+        return self.positioning_info[['Entity', 'Location']].values.tolist()
 
     def get_time_step(self):
         return self.time_step
