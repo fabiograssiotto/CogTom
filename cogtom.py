@@ -66,7 +66,11 @@ while (True):
     sam.process()
 
     # Start ToM Module.
-    tom.set(env.get_affordances(), env.get_intentions(), id, edd, sam, memory)
+    tom.set(env.get_affordances(),
+            env.get_intentions(), 
+            env.get_positioning(),
+            id, edd, sam, memory)
+            
     tom.process()
     
     # Print out outputs from all modules and memory.
