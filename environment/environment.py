@@ -29,6 +29,11 @@ class Environment:
                                         delim_whitespace=True,
                                         comment='#')
 
+        # Positioning for entities in the scene
+        self.positioning = pd.read_csv(folder + 'positioning.txt',
+                                       delim_whitespace=True,
+                                       comment='#')
+        
         # Eye Direction System, identifies which entities are in the visual field of an agent.
         self.eye_dir_df = pd.read_csv(folder + 'eye_directions.txt',
                                        delim_whitespace=True,
