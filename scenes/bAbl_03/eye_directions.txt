@@ -1,0 +1,12 @@
+# This file simulates a visual system capable of identifying eye direction.
+# The information is provided in the form
+# t Agent Object where:
+# t is the simulation time step
+# Agent is agent name
+# Object is the entity the agent is looking at.
+t   Agent   Object
+1   John    Apple
+2   John    Apple
+3   John    Apple
+4   John    Apple
+

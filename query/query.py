@@ -46,7 +46,8 @@ class Query:
 
     def print_help(self):
         print("To ask me about people: 'p'")
-        print("To ask me about objects: 'o'")
+        print("To ask me about things: 'o'")
+        print("To ask me about the Observer: 'o'")
         print("To go to the next mind step: 'enter'")
         print("To quit the simulation: 'q'")
         print()
@@ -80,12 +81,28 @@ class Query:
                     print(s)    
                 print()
                 return 0
-        elif (opt == "o"):
-            print("About what object you want to know about?")
-            print(self.mem.get_objects())
+        elif (opt == "t"):
+            print("About which thing you want to know about?")
+            print(self.mem.get_things())
             object = input("")
             print()
-            data = self.mem.get_object_beliefs(object)
+            data = self.mem.get_thing_beliefs(object)
+            if (data.empty):
+                print("Sorry, I cannot understand that.")
+                return 0
+            else:
+                str_list = data.to_string(header = False, index = False).split('\n')
+                for blf in str_list:
+                    # Remove extra whitespaces
+                    s = " ".join(blf.split())
+                    # Remove 'None' if at the end of the sentence
+                    if (s.split()[-1] == 'None'):
+                        s = " ".join(s.split()[:-1])
+                    print(s)    
+                print()
+                return 0
+        elif (opt == "o"):
+            data = self.mem.get_observer_beliefs()
             if (data.empty):
                 print("Sorry, I cannot understand that.")
                 return 0

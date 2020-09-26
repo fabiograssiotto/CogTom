@@ -56,9 +56,11 @@ class BeliefMemory:
 
     def get_people(self):
         # Returns the set of the agents in the environment
-        return set(self.belief_df['Agent'].unique())
+        agents = set(self.belief_df['Agent'].unique())
+        agents.remove('Observer')
+        return agents
 
-    def get_objects(self):
+    def get_things(self):
         agents = self.get_people()
         # set of objects
         objects = set(self.belief_df['Object'].unique()) - agents
@@ -69,8 +71,12 @@ class BeliefMemory:
         df = self.belief_df[self.belief_df['Agent'] == person]
         return df
     
-    def get_object_beliefs(self, object):
+    def get_thing_beliefs(self, object):
         df = self.belief_df[self.belief_df['Object'] == object]
+        return df
+
+    def get_observer_beliefs(self):
+        df = self.belief_df[self.belief_df['Agent'] == 'Observer']
         return df
 
     def print(self, t):

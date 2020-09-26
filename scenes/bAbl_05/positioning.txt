@@ -1,0 +1,21 @@
+# This file presents positioning location for each of the entities in he scene.
+# Positioning data is important to locate agents and objects in the environment.
+t   Entity  Location   
+1   Mary    Room
+1   Fred    Room
+1   Jeff    Room
+1   Bill    Room
+1   Cake    Room
+1   Milk    Room
+2   Mary    Room
+2   Fred    Room
+2   Jeff    Room
+2   Bill    Room
+2   Cake    Room
+2   Milk    Room
+3   Mary    Room
+3   Fred    Room
+3   Jeff    Room
+3   Bill    Room
+3   Cake    Room
+3   Milk    Room

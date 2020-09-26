@@ -51,6 +51,7 @@ class IntentionHandler:
             'Pickup': self.pickup,
             'Go': self.go,
             'Give': self.give,
+            'Drop': self.drop,
             'Exits': self.skip,
             'Enters': self.skip,
             'Search': self.skip
@@ -94,4 +95,9 @@ class IntentionHandler:
     def give(self, agt, obj, tgt, belief):
         belief[3] = 'Was Given to'
         belief.append(tgt)
+        return belief
+
+    def drop(self, agt, obj, tgt, belief):
+        belief[3] = 'Dropped'
+        belief.append('Of ' + agt)
         return belief

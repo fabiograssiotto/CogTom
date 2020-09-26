@@ -1,0 +1,9 @@
+# This file simulates a camera input identifying a scene.
+# The camera system identifies the intention of an agent
+# based on movement and posture information in the scene.
+# The column t specifies the time step for the camera information. 
+t   Agent   Intention   Object    Target
+1   John    Pickup      Apple     None
+2   John    Go          Self      Office
+3   John    Go          Self      Kitchen
+4   John    Drop        Apple     None

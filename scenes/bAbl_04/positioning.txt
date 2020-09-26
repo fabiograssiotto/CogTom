@@ -1,0 +1,9 @@
+# This file presents positioning location for each of the entities in he scene.
+# Positioning data is important to locate agents and objects in the environment.
+t Entity  Location
+1 John     Playground
+1 Bob      Playground
+1 Football Playground
+2 John     Playground
+2 Bob      Kitchen
+2 Football Playground
