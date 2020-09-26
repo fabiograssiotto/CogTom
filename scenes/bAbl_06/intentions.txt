@@ -3,5 +3,7 @@
 # based on movement and posture information in the scene.
 # The column t specifies the time step for the camera information. 
 t   Agent   Intention   Object    Target
-1   John    Pickup      Football  None
-2   Bob     Go          Self      Kitchen
+1   John    Go          Self      Playground
+1   Daniel  Go          Self      Bathroom
+2   John    Go          Self      Hallway
+2   Daniel  None        Self      None

@@ -51,6 +51,6 @@ class Sam(Model):
         self.logger.write("Agents with shared attention: " + str(self.shared_attn_list), t)
 
         # Latex
-        df_shared_attn = pd.DataFrame(self.shared_attn_list, columns = ['Object', 'Agent 1', 'Agent 2'])
+        df_shared_attn = pd.DataFrame(self.shared_attn_list)
         if not df_shared_attn.empty:
             self.logger.write_tex(df_shared_attn.to_latex(index=False, caption='SAM Shared Attention Table'), t)

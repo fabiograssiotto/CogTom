@@ -5,9 +5,8 @@
 # Agent is agent name
 # Object is the entity the agent is looking at.
 t   Agent   Object
-1   John    Bob
-1   John    Football
-1   Bob     John
-1   Bob     Football
-2   John    Football
+1   John    Daniel
+1   Daniel  John
+2   John    Daniel
+2   Daniel  John
 

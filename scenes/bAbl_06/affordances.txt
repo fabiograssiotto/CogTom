@@ -4,5 +4,4 @@
 # Affordances, for the purpose of this system, are immutable properties during the simulation timeline.
 Object   Affordance
 John     Exists
-Football Pickup
-Bob      Exists
+Daniel   Exists

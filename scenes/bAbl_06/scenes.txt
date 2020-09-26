@@ -1,6 +1,6 @@
 # This file describes what is the current scene
 # the system is analysing in textual form.
 t:Scene
-1:John is in the playground and picks up the football.
-2:Bob goes to the kitchen.
+1:John moved to the playground and Daniel went to the bathroom.
+2:John went to the hallway.
 

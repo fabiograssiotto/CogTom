@@ -3,5 +3,5 @@
 # For example, a Box may contain other objects, and a Ball may be hidden.
 # Affordances, for the purpose of this system, are immutable properties during the simulation timeline.
 Object  Affordance
-Mary    Move
-John    Move
+Mary    Exists
+John    Exists

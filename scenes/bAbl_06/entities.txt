@@ -5,8 +5,7 @@
 # Column t specifies the time step for the camera information. 
 t   Entity   Is_Agent
 1   John     True
-1   Bob      True
-1   Football False
+1   Daniel   True
 2   John     True
-2   Football False
+2   Daniel   True
 
