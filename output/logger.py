@@ -1,5 +1,7 @@
 import sys
 import os
+import shutil
+import time
 from pathlib import Path
 
 class Logger(object):
@@ -18,6 +20,11 @@ class Logger(object):
         # Logging and Latex folders
         log_folder = Path("output/log/")
         tex_folder = Path("output/tex/")
+
+        # remove contents from a previous run
+        shutil.rmtree(log_folder, ignore_errors= True)
+        shutil.rmtree(tex_folder, ignore_errors= True)
+
         if not os.path.exists(log_folder):
             os.makedirs(log_folder)
         if not os.path.exists(tex_folder):
